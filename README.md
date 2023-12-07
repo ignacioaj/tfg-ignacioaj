@@ -194,7 +194,7 @@ Project Link: [tfg-ignacioaj](https://github.com/ignacioaj/tfg-ignacioaj)
 
 ## Acknowledgments
 
-- []()
+- [REAC/TS](https://orise.orau.gov/reacts/index.html)
 - []()
 - []()
 
@@ -204,7 +204,7 @@ Project Link: [tfg-ignacioaj](https://github.com/ignacioaj/tfg-ignacioaj)
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
+[contributors-url]: https://orise.orau.gov/reacts/index.html
 [forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
 [forks-url]: https://github.com/github_username/repo_name/network/members
 [stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
