@@ -38,14 +38,14 @@
   <p align="center">
     project_description
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/ignacioaj/tfg-ignacioaj"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://github.com/ignacioaj/tfg-ignacioaj">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="https://github.com/ignacioaj/tfg-ignacioaj/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/ignacioaj/tfg-ignacioaj/issues">Request Feature</a>
   </p>
 </div>
 
@@ -81,7 +81,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+This project is my work for the defense of the Bachelor's thesis in Biomedical Engineering at University of Málaga (UMA). It consists in the use of Deep Learning and Computer Vision techniques for the detection of dicentric chromosomes, chromosomical aberrations (chromosmes with 2 centromeres) that arise as a result of chromosome breakeage after high-energy raditiation exposure and misrepair. `ignacioaj`, `tfg-ignacioaj`, `Ignacio Atencia Jiménez`, `ignacioatencia@gmail.com`, `tfg-ignacioaj`, `Bachelor thesis focused on dicentric chromosome detection`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -119,11 +119,11 @@ This is an example of how to list things you need to use the software and how to
 1. Get a free API Key at [https://example.com](https://example.com)
 2. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/ignacioaj/tfg-ignacioaj.git
    ```
-3. Install NPM packages
+3. Install PIP packages
    ```sh
-   npm install
+   pip install
    ```
 4. Enter your API in `config.js`
    ```js
@@ -214,7 +214,7 @@ Project Link: [tfg-ignacioaj](https://github.com/ignacioaj/tfg-ignacioaj)
 [license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
 [license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
+[linkedin-url]: https://www.linkedin.com/in/ignacio-atencia-jim%C3%A9nez-7a15301b6/
 [product-screenshot]: images/screenshot.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://pypi.org/project/opencv-python/
