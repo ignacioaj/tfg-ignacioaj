@@ -36,7 +36,7 @@
 <h3 align="center">Dicentric Chromosome Detection</h3>
 
   <p align="center">
-    project_description
+    Bachelor thesis focused on dicentric chromosome detection
     <br />
     <a href="https://github.com/ignacioaj/tfg-ignacioaj"><strong>Explore the docs »</strong></a>
     <br />
