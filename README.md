@@ -36,7 +36,7 @@
 <h3 align="center">Dicentric Chromosome Detection</h3>
 
   <p align="center">
-    Bachelor thesis focused on dicentric chromosome detection
+    Bachelor thesis focused on dicentric chromosome detection using Computer Vision and Deep Learning techniques, as well as image processing
     <br />
     <a href="https://github.com/ignacioaj/tfg-ignacioaj"><strong>Explore the docs »</strong></a>
     <br />
