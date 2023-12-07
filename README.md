@@ -195,8 +195,8 @@ Project Link: [tfg-ignacioaj](https://github.com/ignacioaj/tfg-ignacioaj)
 ## Acknowledgments
 
 - [REAC/TS](https://orise.orau.gov/reacts/index.html)
-- []()
-- []()
+- [Miguel Ángel Molina Cabello]()
+- [Miguel José Ruiz Gómez]()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
