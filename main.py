@@ -248,7 +248,7 @@ def chromosome_cut():
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# images_to_chro:                                                        #
+# images_to_chro:                                                             #
 # Moves images from global folder into Processed folder. It also classifies   #
 # them into different categories according to previous transformations        #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
