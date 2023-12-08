@@ -55,7 +55,7 @@ def get_peak(input_img):
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# process_images:                                                              #
+# process_images:                                                             #
 # Gets raw images from /Unmarked folder and processes them into BW, then      #
 # binary, then morphological transform and saves the results                  #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
