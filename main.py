@@ -33,7 +33,7 @@ def get_peak(input_img):
 
     y_peaks = []
 
-    d = n_samples * 30 / 256
+    d = n_samples * 30 / 256     # Rule of 3: if n_samples == 256 then d_samples == 30
     ind_peaks = signal.find_peaks(y2, height=5, distance=d)[0]  # indexes where peaks can be found
     for i in range(len(ind_peaks)):
         ind = ind_peaks[i]       # index where i_th peak can be found
