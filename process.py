@@ -483,7 +483,7 @@ def mosaic():
         else:
             imgname = sys.argv[2]
         imgdir = rf"{cd}\Unmarked\{imgname}.jpg"
-        img = cv2.imread(imgdir)
+        img = cv2.cvtColor(cv2.imread(imgdir), cv2.COLOR_BGR2GRAY)
         _, black = cv2.threshold(img, 255, 255, cv2.THRESH_BINARY)
         if 'b' in sys.argv and not 'u' in sys.argv:  # Use black image as first image in the mosaic
             mosaic_list.append(black)
@@ -535,10 +535,10 @@ def mosaic():
                 if "aaa" in config:
                     config_dir += rf"30"
                     features += "a30"
-                if "aa" in config:
+                elif "aa" in config:
                     config_dir += rf"20"
                     features += "a20"
-                if "a" in config:
+                elif "a" in config:
                     config_dir += rf"10"
                     features += "a10"
                 else:
@@ -546,13 +546,14 @@ def mosaic():
                     features += "a00"
 
             config_dir += rf"\{imgname}_P({features}).jpg"
-            img_c = cv2.imread(config_dir) # Read specified file
+            img_c = cv2.cvtColor(cv2.imread(config_dir), cv2.COLOR_BGR2GRAY)  # Read specified file
             mosaic_list.append(img_c)
 
             if 'mv' in sys.argv and not 'mh' in sys.argv:
                 mosaic = np.vstack(mosaic_list)
             elif 'mh' in sys.argv and not 'mv' in sys.argv:
                 mosaic = np.hstack(mosaic_list)
+
 
 
 
@@ -563,7 +564,7 @@ def mosaic():
 
 
         for ind in range(nimg):
-            print(create_dir + rf"\{sys.argv[jref + ind]}.jpg")
+
             mosaic_list.append(cv2.imread(create_dir + rf"\{sys.argv[jref + ind]}.jpg"))
 
         if 'mh' in sys.argv and not 'mv' in sys.argv:
