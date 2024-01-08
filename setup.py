@@ -1,3 +1,5 @@
+import sys
+
 from setuptools import setup, find_packages
 import os
 from sklearn import model_selection
@@ -23,7 +25,7 @@ ensemble_labels_dir= rf"{cd}\Ensemble\labels"
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # create_folders():                                                           #
-# Creates all the folders                                                     #
+# Creates all the folders of the project                                      #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 def create_folders():
     folders = ["Ensemble\labels", "Histograms\w spline", "Histograms\w spline", "Mosaic\create", "Chromosomes\images"]
@@ -551,9 +553,10 @@ def mosaic():
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #  Execution                                                                            #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# > setup k ...  => K-Fold Cross Validation                                             #
-# > setup vl ... => Create Validation Labels folder in every Runs/* folder              #
-# > setup k ...  => K-Fold Cross Validation                                             #
+# > setup.py        => Creates all the folders of the project                           #
+# > setup.py k ...  => K-Fold Cross Validation                                          #
+# > setup.py vl ... => Create Validation Labels folder in every Runs/* folder           #
+# > setup.py k ...  => K-Fold Cross Validation                                          #
 #                                                                                       #
 #  - d=... to delete all files from KFold-Cross Validation/*                            #
 #  - s=... to set seed value                                                            #
@@ -566,14 +569,14 @@ def mosaic():
 #                                                                                       #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                                       #
-# > setup.py d    : Deletes images from main directory                                  #
-# > setup.py d s  : Deletes images from /Processed_spline/*                             #
-# > setup.py d n  : Deletes images from /Processed_otsu/*                               #
-# > setup.py c d  : Deletes images and label.txt from Chromosomes directory             #
+# > setup.py d    => Deletes images from main directory                                 #
+# > setup.py d s  => Deletes images from /Processed_spline/*                            #
+# > setup.py d n  => Deletes images from /Processed_otsu/*                              #
+# > setup.py c d  => Deletes images and label.txt from Chromosomes directory            #
 #                                                                                       #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Mosaic                                                                                #
-# > process.py mv ...    > process.py mh ...                                            #
+# > process.py mv ...               > process.py m                                      #
 #                                                                                       #
 # [1] mh for horizontal mosaic, mv for vertical mosaic                                  #
 # [2] name of image whose config is to be compared (DO NOT ADD .jpg)                    #
@@ -594,6 +597,10 @@ def mosaic():
 # > process.py mh b 2Gy-004 sc2 sc3 sc4 sc5                                             #
 # > process.py mv j mosaic1 mosaic2                                                     #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# > setup.py
+if len(sys.argv)==1:
+    create_folders()
 
 # > setup.py k
 if 'k' in sys.argv and not 'd' in sys.argv:
