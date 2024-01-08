@@ -1,7 +1,0 @@
-¿Cómo subir ficheros a GitHub desde GitBash?
-
-$ cd <project>
-$ git add <file>
-$ git commit -m "msg"
-$ git push
-
