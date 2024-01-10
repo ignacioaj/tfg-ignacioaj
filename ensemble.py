@@ -107,7 +107,7 @@ def ensemble_txt():
                         cp = 0
 
                     output = 0
-                    
+
                     while (output==0) and (cp<=len(lines_p)-1):     # Ground truth is compared with every predicted chromosome
                         cp_info = lines_p[cp].split(' ')
                         pclass = cp_info[0]
@@ -170,9 +170,6 @@ def ensemble_info():
             matrix.append(sum)
     df = pd.DataFrame(data=matrix, index=labels_txt, columns=runs)
     df.to_excel(rf'{ensemble_labels_dir}\ensemble.xlsx')
-
-
-
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
