@@ -1,6 +1,7 @@
 import os
 import sys
 import cv2
+import numpy as np
 import pandas as pd
 
 # Global variables
@@ -103,9 +104,10 @@ def ensemble_txt():
 
                     with open(rf'{valabels_dir}\{labels[lt]}', 'r') as label_p:
                         lines_p = label_p.readlines()
-                        output = 0
                         cp = 0
 
+                    output = 0
+                    
                     while (output==0) and (cp<=len(lines_p)-1):     # Ground truth is compared with every predicted chromosome
                         cp_info = lines_p[cp].split(' ')
                         pclass = cp_info[0]
@@ -137,14 +139,40 @@ def ensemble_txt():
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # ensemble_df()                                                               #
-# Given the coordinates x1,x2,y1,y2 of two different rectangles, returns      #
-# true if the rectangles are coincident and false if the rectangles are not.  #
+# Returns a Excell (.xlsx) of the ensemble labels once generated              #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 def ensemble_df():
     ensemble_content = os.listdir(ensemble_labels_dir)
     for l in range(len(ensemble_content)):
         df = pd.read_csv(rf"{ensemble_labels_dir}\{ensemble_content[l]}", sep=" ", names=runs)
         df.to_excel(rf'{ensemble_labels_dir}\{ensemble_content[l].split(".")[0]}.xlsx')
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# ensemble_info()                                                               #
+# Given the coordinates x1,x2,y1,y2 of two different rectangles, returns      #
+# true if the rectangles are coincident and false if the rectangles are not.  #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+def ensemble_info():
+    ensemble_content = os.listdir(ensemble_labels_dir)
+    labels_txt = []
+    matrix = []
+
+    for l in range(len(ensemble_content)):
+        if '.txt' in ensemble_content[l]:
+            labels_txt.append(ensemble_content[l])
+    for l in range(len(labels_txt)):
+        with open (rf'{ensemble_labels_dir}\{labels_txt[l]}') as label:
+            lines = label.readlines()
+            sum = list(np.zeros(len(runs)))
+            for line in lines:
+                for exp in range(len(line.split(' '))):
+                    sum[exp] += int(line.split(' ')[exp]) / len(lines) * 100
+            matrix.append(sum)
+    df = pd.DataFrame(data=matrix, index=labels_txt, columns=runs)
+    df.to_excel(rf'{ensemble_labels_dir}\ensemble.xlsx')
+
+
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -160,3 +188,6 @@ if not '!txt' in sys.argv:
 
 if 'df' in sys.argv:
     ensemble_df()
+
+if 'i' in sys.argv:
+    ensemble_info()
