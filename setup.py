@@ -1,13 +1,13 @@
 import sys
-
-from setuptools import setup, find_packages
 import os
+
+import pandas as pd
+import numpy as np
 from sklearn import model_selection
 import yaml
-import pandas as pd
 import shutil
+import cv2
 from PIL import Image
-from process import get_peak
 
 VERSION = '0.0.1'
 DESCRIPTION = 'Trabajo Fin de Grado'
@@ -21,14 +21,17 @@ spline_dir = rf'{cd}\Processed_spline'
 otsu_dir = rf'{cd}\Processed_otsu'
 runs_dir = rf'{cd}\Runs'
 hist_dir = rf'{cd}\Histograms'
-ensemble_labels_dir= rf"{cd}\Ensemble\labels"
+ensemble_dir= rf"{cd}\Ensemble"
+mosaic_dir = rf'{cd}\Mosaic'
+kfold_dir = rf"{cd}\KFold-Cross Validation"
+runs = os.listdir(runs_dir)
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # create_folders():                                                           #
 # Creates all the folders of the project                                      #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 def create_folders():
-    folders = ["Ensemble\labels", "Histograms\w spline", "Histograms\w spline", "Mosaic\create", "Chromosomes\images"]
+    folders = ["Ensemble\create", "Ensemble\Metrics\Phase 1", "Ensemble\Metrics\Phase 2", "Ensemble\Phase 1", "Ensemble\Phase 2", "Ensemble\create""Histograms\w spline", "Histograms\w spline", "Mosaic", "Chromosomes\images","KFold-Cross Validation"]
     processed = ["Open 2", "Open 3", "Open 4", "Open 5", "Close 2", "Close 3", "Close 4", "Close 5"]
     additions = ["Addition 00", "Addition 10", "Addition 20", "Addition 30"]
 
@@ -129,10 +132,9 @@ def config_search(config):
 #                                                                             #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 def kfolding(ksplit, seed, config):
-    cd = os.getcwd()
-    k_dir = rf"{cd}\KFold-Cross Validation"
-    if not os.path.isdir(k_dir):
-        os.makedirs(k_dir)
+
+    if not os.path.isdir(kfold_dir):
+        os.makedirs(kfold_dir)
     label_dir = rf"{cd}\Labels"
     label_list = os.listdir(label_dir)
     kf = model_selection.KFold(n_splits=int(ksplit), shuffle=True,
@@ -144,7 +146,7 @@ def kfolding(ksplit, seed, config):
 
     # Create dirs and copy images from source
     for ind_setfold in range(len(kfolds)):
-        fold_dir = rf"{k_dir}\Fold-{ind_setfold + 1}"
+        fold_dir = rf"{kfold_dir}\Fold-{ind_setfold + 1}"
         tr_img_dir = rf"{fold_dir}\train\images"
         tr_label_dir = rf"{fold_dir}\train\labels"
         val_img_dir = rf"{fold_dir}\val\images"
@@ -229,18 +231,8 @@ def create_valabel():
             for l in range(len(vlabels)):
                 label = rf'{vlabels_dir}\{vlabels[l]}'
                 shutil.copy(label, valabel_dir)
-                preds_oks = []
-                with open(rf'{labels_dir}\{vlabels[l]}','r') as tlabel:
-                    n_truths = len(tlabel.readlines())
-                with open(rf'{valabel_dir}\{vlabels[l]}','r') as plabel:
-                    preds = plabel.readlines()
-                    for add in range(n_truths):
-                        preds_oks.append(preds[add])
-                with open(rf'{valabel_dir}\{vlabels[l]}', 'w') as plabel:
-                    lines_ok=''
-                    for chro in range(len(preds_oks)):
-                        lines_ok += preds_oks[chro]
-                    plabel.write(lines_ok)
+
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # chromosome_cut:                                                             #
@@ -444,7 +436,6 @@ def delete_chro():
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 def mosaic():
     mosaic_list = []
-    save_dir = rf"{cd}\Mosaic\create"
     mosaic = []
 
     if 'j' not in sys.argv:
@@ -524,13 +515,9 @@ def mosaic():
                 mosaic = np.vstack(mosaic_list)
             elif 'mh' in sys.argv and not 'mv' in sys.argv:
                 mosaic = np.hstack(mosaic_list)
-
-
-
-
     else:
         nimg = len(sys.argv) - 3  # sys.argv -process.py -mv -j
-        create_dir = rf"{cd}\Mosaic\create"
+        create_dir = rf"{cd}\Mosaic"
         jref = sys.argv.index('j') + 1
 
 
@@ -543,12 +530,64 @@ def mosaic():
         elif 'mv' in sys.argv and not 'mh' in sys.argv:
             mosaic = np.vstack(mosaic_list)
 
-    mnum = len(os.listdir(save_dir))+1
-    while os.path.isfile():
-        mnum = mnum +1
-    mosaicname = f"mosaic{ mnum}.jpg"
-    cv2.imwrite(mosaicname, mosaic)
-    shutil.move(rf"{cd}\{mosaicname}", save_dir)
+    mnum = 1
+    while os.path.isfile(rf'{mosaic_dir}\mosaic{mnum}.jpg'):
+        mnum += 1
+    cv2.imwrite(f"mosaic{mnum}.jpg", mosaic)
+    shutil.move(rf"{cd}\mosaic{mnum}.jpg", mosaic_dir)
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# paint_bb(image_name,exp,chro_sel)                                                               #
+# Deletes images from folder 'Chromosomes/images'                             #
+# Also, deletes labels.txt from 'Chromosomes'                                 #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+def paint_bb(image_name,exp,chro_sel):
+    img = cv2.imread(rf'{dir_path}\{image_name}.jpg')
+    df = pd.read_excel(rf'{ensemble_dir}\Phase 1\{image_name}_bbox.xlsx')
+
+    if chro_sel == '*':
+        iterable0 = 0
+        iterable1 = len(df)
+        feature = ''
+    else:
+        iterable0 = int(chro_sel)
+        iterable1 = int(chro_sel)+1
+        feature = f'_chro{chro_sel}'
+
+    for chro in range(iterable0, iterable1):
+        tcoords = df['Ground Truth'][int(chro)].split(' ')
+        pcoords = df[f'Runs {exp}'][int(chro)]
+
+        xt1 = int(tcoords[0]);
+        xt2 = int(tcoords[1]);
+        yt1 = int(tcoords[2]);
+        yt2 = int(tcoords[3])
+
+        tcolor = (0, 0, 0)        # ground truth bounding box color : black
+        start = (xt1, yt1)
+        end = (xt2, yt2)
+        img = cv2.rectangle(img, start, end, tcolor, 1)
+
+        if '-' not in pcoords:
+            pcoords = pcoords.split(' ')
+            xp1 = int(pcoords[0])
+            xp2 = int(pcoords[1])
+            yp1 = int(pcoords[2])
+            yp2 = int(pcoords[3])
+            pclass = int(pcoords[4])
+            if pclass == 0:
+                pcolor = (0, 255, 0)  # prediction bounding box color : green (Normal chromosome)
+            else:
+                pcolor = (0, 0, 255)  # prediction bounding box color : red   (Abnormal chromosome)
+            start = (xp1, yp1)
+            end = (xp2, yp2)
+            img = cv2.rectangle(img, start, end, pcolor, 2)
+
+    cv2.imwrite(image_name + f"_{exp}{feature}.jpg", img)
+    if os.path.isfile(rf'{ensemble_dir}\create\{image_name}_{exp}{feature}.jpg'):
+        os.remove(rf'{ensemble_dir}\create\{image_name}_{exp}{feature}.jpg')
+    shutil.move(rf'{cd}\{image_name}_{exp}{feature}.jpg', rf'{ensemble_dir}\create')
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #  Execution                                                                            #
@@ -597,6 +636,18 @@ def mosaic():
 # > process.py mh b 2Gy-004 sc2 sc3 sc4 sc5                                             #
 # > process.py mv j mosaic1 mosaic2                                                     #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# Paint                                                                                 #
+# > process.py p ...                                                                    #
+# [1] p                                                                                 #
+# [2] name of image to be painted (DO NOT ADD .jpg)                                     #
+# [3] Desired experiment configuration to be painted                                    #
+#     * s for spline, n for otsu                                                        #
+#     * o for open, c for close                                                         #
+#     * 2 for 2x2, 3 for 3x3, 4 for 4x4, 5 for 5x5                                      #
+#     * a for addition 10, aa for addition 20, aaa for addition 30                      #
+# [4] Index of the desired chromosome whose bbox is to be plotted, if any               #
+#     Not including any (or adding '*' instead of index) will plot all bounding boxes   #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 # > setup.py
 if len(sys.argv)==1:
@@ -606,6 +657,14 @@ if len(sys.argv)==1:
 if 'k' in sys.argv and not 'd' in sys.argv:
     if 'd' in sys.argv:
         kfolds_delete()
+    elif 'z' in sys.argv:
+        if '*' in sys.argv:
+            config = ['no2', 'no3', 'no4', 'no5', 'nc2', 'nc3', 'nc4', 'nc5',
+                      'so2', 'so3', 'so4', 'so5', 'sc2', 'sc3', 'sc4', 'sc5']
+
+                # TODO: zip config[i]
+        #else:    TODO: zip config
+
     else:
         if 'c' in sys.argv:                   # Set config
             ind = sys.argv.index('c') + 1
@@ -625,7 +684,14 @@ if 'k' in sys.argv and not 'd' in sys.argv:
         else:
             splits = 5  # Default k-splits
 
-        kfolding(splits, seed, config)
+        if '*' in sys.argv:
+            config = ['no2', 'no3', 'no4', 'no5', 'nc2', 'nc3', 'nc4', 'nc5',
+                      'so2', 'so3', 'so4', 'so5', 'sc2', 'sc3', 'sc4', 'sc5']
+            for i in range(len(config)):
+                kfolding(splits, seed, config[i])
+        else:
+            kfolding(splits, seed, config)
+
 
 # > setup.py vl
 if 'vl' in sys.argv:
@@ -652,6 +718,15 @@ if 'c' in sys.argv and 'd' in sys.argv and not 'mv' in sys.argv and not 'mh' in 
 if 'h' in sys.argv and 'd' in sys.argv:
     delete_hist()
 
-# > setup mv / main mh
+# > setup mv / setup mh
 if 'mv' in sys.argv or 'mh' in sys.argv:
     mosaic()
+
+# > setup p
+if 'p' in sys.argv:
+    if '*' in sys.argv or len(sys.argv) == 4:
+        chro = '*'
+    else:
+        chro = sys.argv[4]
+
+    paint_bb(sys.argv[2], sys.argv[3], chro)
