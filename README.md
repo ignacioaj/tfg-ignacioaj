@@ -67,7 +67,7 @@ Download ```ensemble.py``` and place it into project root folder.
 3. Click on ```Run with Parameters``` and add ```m``` in ```Script Parameters``` to: generate the excel metrics files corresponding to both phases (phase 1: detection and phase 2: classification) of the ensemble.
 
 ## Additional ```setup.py``` Functionalities
-Further functionalities are provided by ```setup.py```. These can be used clicking on ```Run with Parameters``` and adding the following parameters in ```Script Parameters``` :
+Further functionalities are provided by ```setup.py```. These can be used by clicking on ```Run with Parameters``` and adding the following parameters in ```Script Parameters``` :
 
 ### Delete images
 - ```d``` : Deletes images from project root directory.                                 
@@ -75,6 +75,11 @@ Further functionalities are provided by ```setup.py```. These can be used clicki
 - ```d n``` : Deletes images from ```/Processed_otsu/*```.
 
 ### Mosaic
+
+> 📋 Let yyy be a 3 character config code, where first character stands for thresholding technique (s for spline, n for otsu),
+> second character stands for morph filter (o for open c for close) and third character stands for filter size (2 for 2x2, 3 for 3x3, 4 for 4x4 and 5 for 5x5).
+>
+> Example: so2 stands for spline open 2x2.
 
 ### Paint
 Once ```xxx_bbox.xlsx``` has been generated, an image showing the prediction on detected chromosomes can be generated. Ground truth bounding box will be marked in a thin black rectangle, whereas bounding box predictions for dicentric and non-dicentric will be marked with wider rectangles (red for dicentric, green for non-dicentric). It should be noted that detection false positives are NOT shown. 
