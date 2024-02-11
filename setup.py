@@ -63,7 +63,7 @@ def create_folders():
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# yaml-create(x):                                                              #
+# yaml-create(x):                                                             #
 # Gets source of images+labels and creates YAML file                          #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 def yaml_create(x):
@@ -81,6 +81,21 @@ def yaml_create(x):
                 'val': 'val',
                 'names': classes,
             }, y)
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# zipdir(path,ziph) by Mark Byers & Nico Schlömer                             #                                #
+# https://stackoverflow.com/questions/1855095/how-to-create-a-zip-archive-    #
+# of-a-directory                                                              #
+# Zip folders                                                                 #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+def zipdir(path, ziph):
+    # ziph is zipfile handle
+    for root, dirs, files in os.walk(path):
+        for file in files:
+            ziph.write(os.path.join(root, file),
+                       os.path.relpath(os.path.join(root, file),
+                                       os.path.join(path, '..')))
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # config_search(config):                                                      #
 # Gets configuration in a single-letter code and returns config-dir and       #
@@ -196,7 +211,7 @@ def kfolding(ksplit, seed, config):
 
     # Create zip (and delete folder)
     with zipfile.ZipFile(f"{config}.zip", "w") as zip_file:
-        zip_file.write(f"{config}.zip")
+        zipdir(rf"{kfold_dir}/KFold-Cross Validation", zip_file)
     shutil.rmtree(rf'{kfold_dir}/KFold-Cross Validation')
     shutil.move(rf'{cd}/{config}.zip',rf'{kfold_dir}')
     print(f'KFolded from {config_dir}')
@@ -680,7 +695,7 @@ else:
 
             if 's' in sys.argv:  # Set seed
                 ind = sys.argv.index('s') + 1
-                seed = float(sys.argv[ind])
+                seed = int(sys.argv[ind])
             else:
                 seed = round(np.log(2) * 100)  # Default seed
 
