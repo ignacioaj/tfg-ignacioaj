@@ -22,9 +22,10 @@ pip install -r requirements.txt
 
 ## Project files
 
-- ```setup.py```:
-- ```process.py```:
-- ```setup.ipynb```:
+- ```setup.py```: Script for project setup and project secondary functionalities.
+- ```process.py```: Script for image preprocessing.
+- ```train.ipynb```: Script for model training and validation.
+- ```ensemble.py```: Script for data ensembling from model prediction.
 - ```Unmarked.zip```: Image set courtesy of the center REAC/TS of Institute ORISE from Tennessee, U.S.
 - ```Marked.zip```: Image set with anotations (these annotations allowed image labelling)
 - ```Labels.zip```: Label set indicating chromosome location and class.
