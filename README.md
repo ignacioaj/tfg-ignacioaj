@@ -1,5 +1,3 @@
-> 📋 A template README.md for code accompanying a Machine Learning paper
-
 # Dicentric Chromosome Detection
 
 ## Context
