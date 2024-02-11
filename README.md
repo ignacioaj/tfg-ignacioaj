@@ -70,7 +70,7 @@ Download ```ensemble.py``` and place it into project root folder.
 Further functionalities are provided by ```setup.py```. These can be used by clicking on ```Run with Parameters``` and adding the following parameters in ```Script Parameters``` :
 
 ### Delete images
-- ```d``` : to deletes images from project root directory.                                 
+- ```d``` : to delete images from project root directory.                                 
 - ```d s``` : to delete images from ```/Processed_spline/*```.                            
 - ```d n``` : to delete images from ```/Processed_otsu/*```.
 
