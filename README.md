@@ -14,7 +14,7 @@ This project represents the bachelor thesis work to complete the Degree in Biome
 - ```process.py```: Script for image preprocessing.
 - ```train.ipynb```: Script for model training and validation.
 - ```ensemble.py```: Script for data ensembling from model predictions.
-- ```Unmarked.zip```: Image set courtesy of the center REAC/TS of Institute ORISE from Tennessee, U.S.
+- ```Unmarked.zip```: Image set courtesy of the REAC/TS center of ORISE Institute from Tennessee, U.S.
 - ```Marked.zip```: Image set with anotations (these annotations allowed image labelling)
 - ```Labels.zip```: Label set indicating chromosome location and class.
 - ```requirements.txt```: .txt file that contains all project module dependencies to be installed.
