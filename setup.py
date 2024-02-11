@@ -570,9 +570,10 @@ def mosaic():
     shutil.move(rf"{cd}\mosaic{mnum}.jpg", mosaic_dir)
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# paint_bb(image_name,exp,chro_sel)                                                               #
-# Deletes images from folder 'Chromosomes/images'                             #
-# Also, deletes labels.txt from 'Chromosomes'                                 #
+# paint_bb(image_name,exp,chro_sel)                                           #                                 #
+# Paint a red rectangle on detected chromosomes that were classified as       #
+# dicentric and a green rectangle on those that were classified as            #
+# nondicentric. Also, it paints a thinner black rectangle on ground truth     #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 def paint_bb(image_name,exp,chro_sel):
     img = cv2.imread(rf'{dir_path}\{image_name}.jpg')
@@ -626,7 +627,6 @@ def paint_bb(image_name,exp,chro_sel):
 #  Execution                                                                            #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # > setup.py        => Creates all the folders of the project                           #
-# > setup.py k ...  => K-Fold Cross Validation                                          #
 # > setup.py vl ... => Create Validation Labels folder in every Runs/* folder           #
 # > setup.py k ...  => K-Fold Cross Validation                                          #
 #                                                                                       #
@@ -692,19 +692,21 @@ else:
             kfolds_delete()
 
         else:
-
+            # > setup.py k s ...
             if 's' in sys.argv:  # Set seed
                 ind = sys.argv.index('s') + 1
                 seed = int(sys.argv[ind])
             else:
                 seed = round(np.log(2) * 100)  # Default seed
 
+            # > setup.py k f ...
             if 'f' in sys.argv:  # Set k-splits
                 ind = sys.argv.index('k') + 1
                 splits = int(sys.argv[ind])
             else:
                 splits = 5  # Default k-splits
 
+            # > setup.py k c ...
             if 'c' in sys.argv:  # Set config
                 ind = sys.argv.index('c') + 1
                 config = sys.argv[ind]
@@ -714,40 +716,39 @@ else:
                     kfolding(splits, seed, configs[i])
 
     # > setup.py vl
-    if 'vl' in sys.argv:
+    elif 'vl' in sys.argv:
         create_valabel()
 
     # > setup.py c
-    if sys.argv[1] == 'c' and 'd' not in sys.argv and not 'mv' in sys.argv and not 'mh' in sys.argv:
+    elif sys.argv[1] == 'c' and 'd' not in sys.argv and not 'mv' in sys.argv and not 'mh' in sys.argv:
         chromosome_cut()
         images_to_chro()
 
     # > setup.py d
-    if 'd' in sys.argv and 'h' not in sys.argv and not 'c' in sys.argv and not 's' in sys.argv and not 'n' in sys.argv:
+    elif 'd' in sys.argv and 'h' not in sys.argv and not 'c' in sys.argv and not 's' in sys.argv and not 'n' in sys.argv:
         delete_images()
 
-    # > setup.py d
-    if 'd' in sys.argv and ('n' in sys.argv or 's' in sys.argv):
+    # > setup.py d p
+    elif 'd' in sys.argv and 'p' in sys.argv:
         delete_proc()
 
     # > setup.py c d
-    if sys.argv[1] == 'c' and 'd' in sys.argv and not 'mv' in sys.argv and not 'mh' in sys.argv:
+    elif 'c' in sys.argv and 'd' in sys.argv and 'mv' not in sys.argv and 'mh' not in sys.argv:
         delete_chro()
 
     # > setup.py h d
-    if 'h' in sys.argv and 'd' in sys.argv:
+    elif 'h' in sys.argv and 'd' in sys.argv:
         delete_hist()
 
-    # > setup mv / setup mh
-    if 'mv' in sys.argv or 'mh' in sys.argv:
+    # > setup.py mv / setup.py mh
+    elif 'mv' in sys.argv or 'mh' in sys.argv:
         mosaic()
 
-    # > setup p
-    if 'p' in sys.argv:
+    # > setup.py p
+    elif 'p' in sys.argv:
         if '*' in sys.argv or len(sys.argv) == 4:
             chro = '*'
         else:
             chro = sys.argv[4]
 
         paint_bb(sys.argv[2], sys.argv[3], chro)
-
