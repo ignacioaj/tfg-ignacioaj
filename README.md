@@ -22,6 +22,13 @@ pip install -r requirements.txt
 
 ## Project files
 
+- ```setup.py```:
+- ```process.py```:
+- ```setup.ipynb```:
+- ```Unmarked.zip```: Image set courtesy of the center REAC/TS of Institute ORISE from Tennessee, U.S.
+- ```Marked.zip```: Image set with anotations (these annotations allowed image labelling)
+- ```Labels.zip```: Label set indicating chromosome location and class.
+
 ## Setup work environment
 Create a folder where the whole project will be hosted. Then, download ```setup.py``` and place it in that folder (from now on, project root directory).
 Run ```setup.py``` to have all the neccesary folders for the project created.
