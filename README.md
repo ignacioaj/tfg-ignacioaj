@@ -53,7 +53,7 @@ Download ```process.py``` and place it into project root folder.
 
 ## Ensemble
 Download ```ensemble.py``` and place it into project root folder.
-1. Open ```setup.py``` and click on ```Run with Parameters``` and add ```vl``` in ```Script Parameters``` to: merge all validation labels from all splits into an single folder (this is neccesary for the ensemble script to work).
+1. Open ```setup.py``` and click on ```Run with Parameters``` and add ```vl``` in ```Script Parameters``` to: merge all validation labels from all splits into a single folder (this is neccesary for the ensemble script to work).
 2. Run ```process.py``` to generate the excel files corresponding to both phases (phase 1: detection and phase 2: classification) of the ensemble. Three kind of .xlsx will be generated for every image ```xxx``` in every phase:
    - ```xxx_detected.xlsx``` : Columns stand for experiments and rows stand for chromosomes in the image. Cells with '1' had its chromosome detected for its experiments, whereas cells with '0' did not.
    - ```xxx_bbox.xlsx``` : Columns stand for experiments and rows stand for chromosomes in the image. Every cell stores coordinates and class of the prediction of the cromosome if it was detected ('-' if it was not).
