@@ -20,7 +20,7 @@ This project represents the bachelor thesis work to complete my Degree in Biomed
 - ```requirements.txt```: .txt file that contains all project module dependencies to be installed.
 
 ## Installing requirements
-Open the ```cmd``` and reach the folder where the project will be hosted (use ```cd``` command).
+Open the ```cmd``` and reach the folder where the project will be hosted by using the ```cd``` command.
 Once the folder has been reached, install the requirements by typing:
 ```setup
 pip install -r requirements.txt
