@@ -32,7 +32,7 @@ pip install -r requirements.txt
 ## Setup work environment
 Create a folder where the whole project will be hosted. Then, download ```setup.py``` and place it in that folder (from now on, project root directory).
 Run ```setup.py``` to have all the neccesary folders for the project created.
-Then, unzip the ```Unmarked.zip``` and ```Labels.zip``` into the project root directory. 'Marked' is not neccesary for the project, however, it can be also unzipped to have a glance over which of the chromosomes are actually dicentric chromosomes.
+Then, unzip ```Unmarked.zip``` and ```Labels.zip``` into the project root directory. ```Marked.zip``` is not neccesary for the project, however, it can be also unzipped to have a glance over which of the chromosomes are actually dicentric chromosomes.
 
 ## Preprocess images
 Download ```process.py``` and place it into project root folder. 
