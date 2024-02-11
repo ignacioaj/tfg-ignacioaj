@@ -39,8 +39,8 @@ Download ```process.py``` and place it into project root folder.
       - ```k s xxx```: to set seed value to your desired number value ```xxx``` (seed that sets image order randomization)
 
 ## Training and Validation
-1. Upload zips located in ```KFold-Cross Validation``` folder to Google Drive (it is recommend it to place them in the folder ```/Colab Notebooks```). Remember this location for next steps.
-2. Download ```train.ipynb``` and open it with Google Colab. 
+1. Upload zips located in ```KFold-Cross Validation``` folder to Google Drive (it is recommended to place them in the folder ```/Colab Notebooks```). Remember the location you place them for next steps.
+2. Download ```train.ipynb``` and open it in Google Colab. 
 
 To train the model(s) in the paper, run this command:
 
