@@ -34,9 +34,9 @@ Download ```process.py``` and place it into project root folder.
    - Click on ```Run with Parameters``` and add ```h``` in ```Script Parameters``` to: get all the histograms (showing spline curve) for the Spline preprocessing.
    - Click on ```Run with Parameters``` and add ```h wos``` in ```Script Parameters``` to: get all the histograms (without showing spline curve) for the Spline preprocessing. 
 2. Click on ```Run with Parameters``` and add ```n``` in ```Script Parameters``` to: have all the images processed using Otsu preprocessing.
-3. Open ```setup.py``` and click on ```Run with Parameters``` and add ```k``` in ```Script Parameters```to: split dataset into train and validation sets (using K-Fold Cross Validation technique) for every experiment (from just-created preprocessed images).
+3. Open ```setup.py```, click on ```Run with Parameters``` and add ```k``` in ```Script Parameters```to: split dataset into train and validation sets (using K-Fold Cross Validation technique) for every experiment (from just-created preprocessed images).
       - ```k d```: to delete all files from KFold-Cross Validation/* 
-      - ```k s xxx```: to set seed value to ```xxx``` (seed that sets image order randomization)
+      - ```k s xxx```: to set seed value to your desired number value ```xxx``` (seed that sets image order randomization)
 
 
 
