@@ -78,6 +78,7 @@ Further functionalities are provided by ```setup.py```. These can be used by cli
 A mosaic of images can be generated in order to compare them. Use ```mh``` for horizontal mosaics (images height must be the same) and ```mv``` for vertical mosaics (images width must be the same). Generated mosaics will be saved in ```Mosaic``` folder of project root directory. 
 
 - Compare different experiments for a single image: Use ```mh xxx yyy yyy yyy``` or ```mv xxx yyy yyy yyy``` (add as many ```yyy``` as desired), where ```xxx``` stands for the name of the image to be edited and ```yyy``` are all the desired experiment to be studied. Additionally, you can use parameters ```u``` to add untreated image and ```b``` to add blacked image.
+
   Examples: ```mh u 2Gy-004 so2 so3 so4 so5``` , ```mh b 2Gy-004 sc2 sc3 sc4 sc5```
   > 📋 Let yyy be a 3 character config code, where first character stands for thresholding technique (s for spline, n for otsu),
   > second character stands for morph filter (o for open c for close) and third character stands for filter size (2 for 2x2, 3 for 3x3, 4 for 4x4 and 5 for 5x5).
