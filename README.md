@@ -31,9 +31,9 @@ which of the chromosomes are actually dicentric chromosomes.
 ## Preprocess images
 Download ```process.py``` and place it into project root folder. 
 1. Run ```process.py``` to have all the images processed using Spline preprocessing.
-   - Change run configurations clicking on ```Run with Parameters``` and add ```h``` in ```Script Parameters``` to: get all the histograms (showing spline curve) for the Spline preprocessing.
-   - Change run configurations clicking on ```Run with Parameters``` and add ```h wos``` in ```Script Parameters``` to: get all the histograms (without showing spline curve) for the Spline preprocessing. 
-2. Change run configurations clicking on ```Run with Parameters``` and add ```n``` in ```Script Parameters```to: have all the images processed using Otsu preprocessing.
+   - Click on ```Run with Parameters``` and add ```h``` in ```Script Parameters``` to: get all the histograms (showing spline curve) for the Spline preprocessing.
+   - Click on ```Run with Parameters``` and add ```h wos``` in ```Script Parameters``` to: get all the histograms (without showing spline curve) for the Spline preprocessing. 
+2. Click on on ```Run with Parameters``` and add ```n``` in ```Script Parameters```to: have all the images processed using Otsu preprocessing.
 
 ## Training
 
