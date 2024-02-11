@@ -20,8 +20,13 @@ pip install -r requirements.txt
 
 > 📋 Describe how to set up the environment, e.g. pip/conda/docker commands, download datasets, etc...
 
-## Setup work environment
+## Project files
 
+## Setup work environment
+Create a folder where the whole project will be hosted. Then, download ```setup.py``` and place it in that folder (from now on, project root directory).
+Run ```setup.py``` to have all the neccesary folders for the project created.
+Then, unzip the images folder into the project root directory. Only 'Unmarked' is neccesary for the project. However, 'Marked' can be also unzipped to have a glanced at 
+which of the chromosomes are actually dicentric chromosomes.
 
 ## Training
 
