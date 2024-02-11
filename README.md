@@ -70,9 +70,9 @@ Download ```ensemble.py``` and place it into project root folder.
 Further functionalities are provided by ```setup.py```. These can be used by clicking on ```Run with Parameters``` and adding the following parameters in ```Script Parameters``` :
 
 ### Delete images
-- ```d``` : Deletes images from project root directory.                                 
-- ```d s``` : Deletes images from ```/Processed_spline/*```.                            
-- ```d n``` : Deletes images from ```/Processed_otsu/*```.
+- ```d``` : to deletes images from project root directory.                                 
+- ```d s``` : to delete images from ```/Processed_spline/*```.                            
+- ```d n``` : to delete images from ```/Processed_otsu/*```.
 
 ### Mosaic
 
