@@ -28,6 +28,8 @@ Run ```setup.py``` to have all the neccesary folders for the project created.
 Then, unzip the images folder into the project root directory. Only 'Unmarked' is neccesary for the project. However, 'Marked' can be also unzipped to have a glanced at 
 which of the chromosomes are actually dicentric chromosomes.
 
+## Preprocess images
+
 ## Training
 
 To train the model(s) in the paper, run this command:
