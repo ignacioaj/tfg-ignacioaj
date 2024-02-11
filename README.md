@@ -42,8 +42,9 @@ Download ```process.py``` and place it into project root folder.
 3. Open ```setup.py```, click on ```Run with Parameters``` and add ```k``` in ```Script Parameters```to: split dataset into train and validation sets (using 5-Fold Cross Validation technique) for every experiment (from just-created preprocessed images). There are additional parameters that can be set:
 
       - ```k c xxx```: to apply algorithm on single experiment ```xxx``` instead of applying algorithm to all experiments.
-        > 📋 Let be a 3 character config code, where first character stands for umbralization technique (s for spline, n for otsu), second character stands for morph filter 
-        > (o for open c for close) and third character stands for filter size (2 for 2x2, 3 for 3x3, 4 for 4x4 and 5 for 5x5).
+        > 📋 Let xxx be a 3 character config code, where first character stands for umbralization technique (s for spline, n for otsu),
+        > second character stands for morph filter (o for open c for close) and third character stands for filter size (2 for 2x2, 3 for 3x3, 4 for 4x4 and 5 for 5x5).
+        > 
         > Example: so2 stands for spline open 2x2.
 
       - ```k f xxx```: to set number of folds to ```xxx``` instead of 5.
