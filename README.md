@@ -37,10 +37,10 @@ Download ```process.py``` and place it into project root folder.
 3. Open ```setup.py```, click on ```Run with Parameters``` and add ```k``` in ```Script Parameters```to: split dataset into train and validation sets (using K-Fold Cross Validation technique) for every experiment (from just-created preprocessed images).
       - ```k d```: to delete all files from ```KFold-Cross Validation/*``` 
       - ```k s xxx```: to set seed value to your desired number value ```xxx``` (seed that sets image order randomization)
-4. Upload zips to Google Drive (it is recommend it to place them in the folder ```/Colab Notebooks```). Remember this location for next task.
 
 ## Training and Validation
-Download ```train.ipynb``` and open it with Google Colab. 
+1. Upload zips located in ```KFold-Cross Validation``` folder to Google Drive (it is recommend it to place them in the folder ```/Colab Notebooks```). Remember this location for next steps.
+2. Download ```train.ipynb``` and open it with Google Colab. 
 
 To train the model(s) in the paper, run this command:
 
