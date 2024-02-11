@@ -2,9 +2,13 @@
 
 # Dicentric Chromosome Detection
 
-This repository is the official implementation of [My Paper Title](https://arxiv.org/abs/2030.12345).
+## Scope
+This project represents the bachelor thesis work to complete my Degree in Biomedical Engineering at Univeristy of Málaga.
 
-> 📋 Optional: include a graphic explaining your approach/main result, bibtex entry, link to demos, blog posts and tutorials
+## Context
+Dichentric chromosome counting is a technique widely used in biological dosimetry to quantify the genetic damage caused by exposure to radioactivity. Traditionally, this task has been performed manually by health professionals. However, the current interest is focused on achieving the automation of this process through Artificial Intelligence tools to achieve a reduction in time and an improvement in the quality of the results. This project aims to contribute to the state of the art of this study which, to date, there is still little research.
+
+In this work, a detailed study will be carried out in which a convolutional neural network will be trained from a set of images on which different preprocessing techniques will be applied. The predictions produced by the model for each of the experiments will be analysed in order to determine which preprocessing technique provides the best predictions.
 
 ## Requirements
 
@@ -15,6 +19,9 @@ pip install -r requirements.txt
 ```
 
 > 📋 Describe how to set up the environment, e.g. pip/conda/docker commands, download datasets, etc...
+
+## Setup work environment
+
 
 ## Training
 
