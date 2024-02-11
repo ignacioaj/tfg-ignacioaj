@@ -25,10 +25,14 @@ pip install -r requirements.txt
 ## Setup work environment
 Create a folder where the whole project will be hosted. Then, download ```setup.py``` and place it in that folder (from now on, project root directory).
 Run ```setup.py``` to have all the neccesary folders for the project created.
-Then, unzip the images folder into the project root directory. Only 'Unmarked' is neccesary for the project. However, 'Marked' can be also unzipped to have a glanced at 
+Then, unzip the images folder into the project root directory. Only 'Unmarked' is neccesary for the project. However, 'Marked' can be also unzipped to have a glance over 
 which of the chromosomes are actually dicentric chromosomes.
 
 ## Preprocess images
+Download ```process.py``` and place it into project root folder. 
+1. Run ```process.py``` to have all the images processed using Spline preprocessing.
+   - Change run configurations clicking on ```Run with Parameters``` and add ```h``` in ```Script Parameters``` to: get all the histograms for the Spline preprocessing. 
+2. Change run configurations clicking on ```Run with Parameters``` and add ```n``` in ```Script Parameters```to: have all the images processed using Otsu preprocessing.
 
 ## Training
 
