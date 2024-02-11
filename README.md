@@ -51,7 +51,7 @@ Download ```process.py``` and place it into project root folder.
 ## Training and Validating Model
 1. Upload zips located in ```KFold-Cross Validation``` folder to Google Drive (it is recommended to place them in the folder ```/Colab Notebooks```). Remember the location you place them for next steps.
 2. Download ```train.ipynb``` and open it in Google Colab.
-3. Follow the instructions of the .ipynb and run cells one by one. Note that training process takes too much time (around 20 minutes each), that's why iterating all executions was avoided.
+3. Follow the instructions in the .ipynb and run cells one by one. Note that training process takes too much time (around 20 minutes each), that's why iterating all executions was avoided.
 4. Upload generated ```runs``` folder to GDrive (following the instructions in the .ipynb) and download it from there.
 5. Extract the downloaded zip and move the folder whose name is runs into Runs folder (from the project root directory). It is highly recommended to rename the experiment runs folder ```runs``` to ```Runs xxx```, being ```xxx``` the experiment config code, for example: ```Runs so2``` , ```Runs nc3``` , ```Runs no4``` , ...
 
