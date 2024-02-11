@@ -24,7 +24,7 @@ hist_dir = rf'{cd}\Histograms'
 ensemble_dir= rf"{cd}\Ensemble"
 mosaic_dir = rf'{cd}\Mosaic'
 kfold_dir = rf"{cd}\KFold-Cross Validation"
-
+runs = os.listdir(runs_dir)
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # create_folders():                                                           #
@@ -49,7 +49,7 @@ def create_folders():
             os.makedirs(rf'{otsu_dir}\{processed[exp]}')
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# yaml-create():                                                              #
+# yaml-create(x):                                                              #
 # Gets source of images+labels and creates YAML file                          #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 def yaml_create(x):
@@ -73,8 +73,7 @@ def yaml_create(x):
 # features (feature code stated in processed images name).                    #
 #                                                                             #
 # Example:                                                                    #
-# 'so2' --> config_search() -->                                               #
-# --> ['{cd}\Processed_spline\Close 2\Addition 0', 'C2']                      #
+# config_search('so2') --> ['{cd}\Processed_spline\Close 2\Addition 0', 'C2'] #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 def config_search(config):
     config_dir = cd
@@ -129,7 +128,7 @@ def config_search(config):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # kfolding():                                                                 #
-#                                                                             #
+# Create KFolding-Cross Validation folder for dseried config                  #                                                                        #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 def kfolding(ksplit, seed, config):
 
@@ -138,7 +137,7 @@ def kfolding(ksplit, seed, config):
     label_dir = rf"{cd}\Labels"
     label_list = os.listdir(label_dir)
     kf = model_selection.KFold(n_splits=int(ksplit), shuffle=True,
-                               random_state=seed)  # Creamos el objeto de KFolding con k=5 folds
+                               random_state=seed)  # Create KFolding object with ksplit splits
     kfolds = list(kf.split(label_list))
 
     # Search dir of images specified in config
@@ -146,7 +145,7 @@ def kfolding(ksplit, seed, config):
 
     # Create dirs and copy images from source
     for ind_setfold in range(len(kfolds)):
-        fold_dir = rf"{kfold_dir}\Fold-{ind_setfold + 1}"
+        fold_dir = rf"{kfold_dir}\{config}\Fold-{ind_setfold + 1}"
         tr_img_dir = rf"{fold_dir}\train\images"
         tr_label_dir = rf"{fold_dir}\train\labels"
         val_img_dir = rf"{fold_dir}\val\images"
@@ -178,9 +177,11 @@ def kfolding(ksplit, seed, config):
             os.rename(rf"{val_img_dir}\{img_name}",rf"{val_img_dir}\{lb_name}.jpg")  # Image name must match with label name
             shutil.copy(rf"{cd}\Labels\{lb_name}.txt", val_label_dir)
 
-        if 'y' in sys.argv:
-            yaml_create(ind_setfold+1)
-            shutil.move(rf"{cd}\data.yaml", fold_dir)
+        yaml_create(ind_setfold+1)
+        shutil.move(rf"{cd}\data.yaml", fold_dir)
+
+    # Create zip (and delete folder)
+    #TODO
 
     print(f'KFolded from {config_dir}')
 
@@ -214,7 +215,7 @@ def kfolds_delete():
 #       Runs/* for this method to work.                                       #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 def create_valabel():
-    runs = os.listdir(runs_dir)
+
     for exp in range(len(runs)):
         exp_dir = rf'{runs_dir}\{runs[exp]}'
         valabel_dir = rf'{exp_dir}\Validation Labels'
@@ -650,83 +651,83 @@ def paint_bb(image_name,exp,chro_sel):
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 # > setup.py
-if len(sys.argv) == 1:
+if len(sys.argv)==1:
     create_folders()
-else:
-    # > setup.py k
-    if 'k' in sys.argv and not 'd' in sys.argv:
-        if 'd' in sys.argv:
-            kfolds_delete()
-        elif 'z' in sys.argv:
-            if '*' in sys.argv:
-                config = ['no2', 'no3', 'no4', 'no5', 'nc2', 'nc3', 'nc4', 'nc5',
-                          'so2', 'so3', 'so4', 'so5', 'sc2', 'sc3', 'sc4', 'sc5']
+
+# > setup.py k
+if 'k' in sys.argv and not 'd' in sys.argv:
+    if 'd' in sys.argv:
+        kfolds_delete()
+    elif 'z' in sys.argv:
+        if '*' in sys.argv:
+            config = ['no2', 'no3', 'no4', 'no5', 'nc2', 'nc3', 'nc4', 'nc5',
+                      'so2', 'so3', 'so4', 'so5', 'sc2', 'sc3', 'sc4', 'sc5']
 
                 # TODO: zip config[i]
-            # else:    TODO: zip config
+        #else:    TODO: zip config
 
+    else:
+        if 'c' in sys.argv:                   # Set config
+            ind = sys.argv.index('c') + 1
+            config = sys.argv[ind]
         else:
-            if 'c' in sys.argv:  # Set config
-                ind = sys.argv.index('c') + 1
-                config = sys.argv[ind]
-            else:
-                config = ''  # Default config
+            config = ''                       # Default config
 
-            if 's' in sys.argv:  # Set seed
-                ind = sys.argv.index('s') + 1
-                seed = sys.argv[ind]
-            else:
-                seed = round(np.log(2) * 100)  # Default seed
-
-            if type(sys.argv[sys.argv.index('k') + 1]) == int:  # Set k-splits
-                ind = sys.argv.index('k') + 1
-                splits = sys.argv[ind]
-            else:
-                splits = 5  # Default k-splits
-
-            if '*' in sys.argv:
-                config = ['no2', 'no3', 'no4', 'no5', 'nc2', 'nc3', 'nc4', 'nc5',
-                          'so2', 'so3', 'so4', 'so5', 'sc2', 'sc3', 'sc4', 'sc5']
-                for i in range(len(config)):
-                    kfolding(splits, seed, config[i])
-            else:
-                kfolding(splits, seed, config)
-
-    # > setup.py vl
-    if 'vl' in sys.argv:
-        create_valabel()
-
-    # > setup.py c
-    if 'c' in sys.argv and 'd' not in sys.argv and not 'mv' in sys.argv and not 'mh' in sys.argv:
-        chromosome_cut()
-        images_to_chro()
-
-    # > setup.py d
-    if 'd' in sys.argv and 'h' not in sys.argv and not 'c' in sys.argv and not 's' in sys.argv and not 'n' in sys.argv:
-        delete_images()
-
-    # > setup.py d
-    if 'd' in sys.argv and ('n' in sys.argv or 's' in sys.argv):
-        delete_proc()
-
-    # > setup.py c d
-    if 'c' in sys.argv and 'd' in sys.argv and not 'mv' in sys.argv and not 'mh' in sys.argv:
-        delete_chro()
-
-    # > setup.py h d
-    if 'h' in sys.argv and 'd' in sys.argv:
-        delete_hist()
-
-    # > setup mv / setup mh
-    if 'mv' in sys.argv or 'mh' in sys.argv:
-        mosaic()
-
-    # > setup p
-    if 'p' in sys.argv:
-        if '*' in sys.argv or len(sys.argv) == 4:
-            chro = '*'
+        if 's' in sys.argv:  # Set seed
+            ind = sys.argv.index('s') + 1
+            seed = sys.argv[ind]
         else:
-            chro = sys.argv[4]
+            seed = round(np.log(2) * 100)     # Default seed
 
-        paint_bb(sys.argv[2], sys.argv[3], chro)
+        if type(sys.argv[sys.argv.index('k') + 1]) == int:  # Set k-splits
+            ind = sys.argv.index('k') + 1
+            splits = sys.argv[ind]
+        else:
+            splits = 5  # Default k-splits
 
+        if '*' in sys.argv:
+            config = ['no2', 'no3', 'no4', 'no5', 'nc2', 'nc3', 'nc4', 'nc5',
+                      'so2', 'so3', 'so4', 'so5', 'sc2', 'sc3', 'sc4', 'sc5']
+            for i in range(len(config)):
+                kfolding(splits, seed, config[i])
+        else:
+            kfolding(splits, seed, config)
+
+
+# > setup.py vl
+if 'vl' in sys.argv:
+    create_valabel()
+
+# > setup.py c
+if sys.argv[1] == 'c' and 'd' not in sys.argv and not 'mv' in sys.argv and not 'mh' in sys.argv:
+    chromosome_cut()
+    images_to_chro()
+
+# > setup.py d
+if 'd' in sys.argv and 'h' not in sys.argv and not 'c' in sys.argv and not 's' in sys.argv and not 'n' in sys.argv:
+    delete_images()
+
+# > setup.py d
+if 'd' in sys.argv and ('n' in sys.argv or 's' in sys.argv):
+    delete_proc()
+
+# > setup.py c d
+if sys.argv[1] == 'c' and 'd' in sys.argv and not 'mv' in sys.argv and not 'mh' in sys.argv:
+    delete_chro()
+
+# > setup.py h d
+if 'h' in sys.argv and 'd' in sys.argv:
+    delete_hist()
+
+# > setup mv / setup mh
+if 'mv' in sys.argv or 'mh' in sys.argv:
+    mosaic()
+
+# > setup p
+if 'p' in sys.argv:
+    if '*' in sys.argv or len(sys.argv) == 4:
+        chro = '*'
+    else:
+        chro = sys.argv[4]
+
+    paint_bb(sys.argv[2], sys.argv[3], chro)
