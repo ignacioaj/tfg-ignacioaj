@@ -43,6 +43,7 @@ Download ```process.py``` and place it into project root folder.
 2. Click on ```Run with Parameters``` and add ```n``` in ```Script Parameters``` to: have all the images processed using Otsu preprocessing.
 3. Open ```setup.py```, click on ```Run with Parameters``` and add ```k``` in ```Script Parameters```to: split dataset into train and validation sets (using K-Fold Cross Validation technique) for every experiment (from just-created preprocessed images). There are additional parameters that can be set:
 
+      - ```k c xxx```: to apply algorithm on single experiment ```xxx``` (all experiments by default)
       - ```k f xxx```: to set number of folds to ```xxx``` (5 by default)
       - ```k s xxx```: to set seed value to your desired number value ```xxx``` (seed that sets image order randomization)
       - ```k d```: to delete all files from ```KFold-Cross Validation/*``` 
