@@ -36,7 +36,7 @@ Download ```process.py``` and place it into project root folder.
 1. Run ```process.py``` to have all the images processed. Once done, you can:
    - Click on ```Run with Parameters``` and add ```h``` in ```Script Parameters``` to: get all the histograms (showing spline curve) for the Spline preprocessing.
    - Click on ```Run with Parameters``` and add ```h wos``` in ```Script Parameters``` to: get all the histograms (without showing spline curve) for the Spline preprocessing.
-3. Open ```setup.py```, click on ```Run with Parameters``` and add ```k``` in ```Script Parameters```to: split dataset into train and validation sets (using 5-Fold Cross Validation technique) for every experiment (from just-created preprocessed images). There are additional parameters that can be set:
+3. Open ```setup.py```, click on ```Run with Parameters``` and add ```k``` in ```Script Parameters```to: split dataset into train and validation sets (using 5-Fold Cross Validation technique) for every experiment (from just-created preprocessed images). A ready-to-train zip per experiment will be generated in ```KFold-Cross Validation``` folder (in project root directory). Additionally, there are other parameters that can be set:
 
       - ```k c xxx```: to apply algorithm on one single experiment ```xxx``` instead of applying algorithm to all experiments.
         > 📋 Let xxx be a 3 character config code, where first character stands for thresholding technique (s for spline, n for otsu),
