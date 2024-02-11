@@ -9,7 +9,6 @@ import sys
 # Global variables
 cd = os.getcwd()  # get current directory
 dir_path = rf"{cd}\Unmarked"
-answer_path = rf"{cd}\Marked"
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -151,20 +150,16 @@ def process_images():
     # focus_kernel = np.matrix([[0, -1, 0], [-1, 5, -1], [0, -1, 0]])
 
     list_img = os.listdir(dir_path)
-    list_ans = os.listdir(answer_path)
 
     for idx in range(len(list_img)):
         img_dir = dir_path + rf"\{list_img[idx]}"
-        img_ans_dir = answer_path + rf"\{list_ans[idx]}"
         save_name = list_img[idx].split('.')[0]
 
         # Image read
         img = cv2.imread(img_dir)
-        img_ans = cv2.imread(img_ans_dir)
 
         # Image to BW
         img_bw = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        img_bwans = cv2.cvtColor(img_ans, cv2.COLOR_BGR2GRAY)
 
         # Image to Binary
         thd = get_peak(img_bw)[0]  # Gets highest black peak
