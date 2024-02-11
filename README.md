@@ -20,7 +20,7 @@ In this work, a detailed study will be carried out in which a convolutional neur
 - ```requirements.txt```: .txt file that contains all project module dependencies to be installed.
 
 ## Installing requirements
-Open the ```cmd``` and reach the folder where the project will be hosted by using the ```cd``` command.
+Download ```requirements.txt``` and place it in the project will be hosted. Then, open the ```cmd``` and reach that folder by using the ```cd``` command.
 Once the folder has been reached, install the requirements by typing:
 ```setup
 pip install -r requirements.txt
