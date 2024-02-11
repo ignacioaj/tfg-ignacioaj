@@ -52,7 +52,12 @@ Download ```process.py``` and place it into project root folder.
 5. Extract the downloaded zip and move the folder whose name is runs into Runs folder (from the project root directory). It is highly recommended to rename the experiment runs folder ```runs``` to ```Runs xxx```, being ```xxx``` the experiment config code, for example: ```Runs so2``` , ```Runs nc3``` , ```Runs no4``` , ...
 
 ## Ensemble
-To evaluate my model on ImageNet, run:
+Download ```ensemble.py``` and place it into project root folder.
+1. Run ```process.py``` to generate the excel files corresponding to both phases (phase 1: detection and phase 2: classification) of the ensemble. 3 kind of .xlsx will be generated for every image ```xxx``` in every phase:
+   - ```xxx_detected.xlsx``` : Columns stand for experiments and rows stand for chromosomes in the image. Cells with '1' had its chromosome detected for its experiments, whereas cells with '0' did not.
+   - ```xxx_confusion.xlsx``` : Columns stand for experiments and rows stand for prediction type. Every cell stores a count of its prediction type for its experiment.
+   - ```xxx_bbox.xlsx``` : Columns stand for experiments and rows stand for chromosomes in the image. Every cell stores coordinates and class of the prediction of the cromosome if it was detected ('-' if it was not).
+3. Click on ```Run with Parameters``` and add ```m``` in ```Script Parameters``` to: generate the excel metrics files corresponding to both phases (phase 1: detection and phase 2: classification) of the ensemble.
 
 ## Additional ```setup.py``` Functionalities
 
