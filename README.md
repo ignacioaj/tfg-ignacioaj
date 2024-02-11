@@ -85,7 +85,7 @@ A mosaic of images can be generated in order to compare them. Use ```mh``` for h
   >
   > Example: so2 stands for spline open 2x2.
 
-- Compare other images (thought for creating mosaics out of mosaics): Parameter ```j``` will compose a mosaic from images in ```Mosaics``` folder instead from the experiments. Use ```mh j xxx xxx xxx``` or ```mv j xxx xxx xxx``` where ```xxx``` (add as many ```xxx``` as desired) stands for the name of the image to be edited (excluiding '.jpg'). Example: ```mv j mosaic1 mosaic2```
+- Compare other images (thought for creating mosaics out of mosaics): Parameter ```j``` will compose a mosaic from images in ```Mosaics``` folder instead from the experiments. Use ```mh j xxx xxx xxx``` or ```mv j xxx xxx xxx``` (add as many ```xxx``` as desired) where ```xxx```  stands for the name of the image to be edited (excluiding '.jpg'). Example: ```mv j mosaic1 mosaic2```
 
 ### Paint
 Once ```xxx_bbox.xlsx``` has been generated, an image showing the prediction on detected chromosomes can be generated. Ground truth bounding box will be marked in a thin black rectangle, whereas bounding box predictions for dicentric and non-dicentric will be marked with wider rectangles (red for dicentric, green for non-dicentric). It should be noted that detection false positives are NOT shown. 
