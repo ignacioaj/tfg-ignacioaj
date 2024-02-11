@@ -67,10 +67,12 @@ Download ```ensemble.py``` and place it into project root folder.
 3. Click on ```Run with Parameters``` and add ```m``` in ```Script Parameters``` to: generate the excel metrics files corresponding to both phases (phase 1: detection and phase 2: classification) of the ensemble.
 
 ## Additional ```setup.py``` Functionalities
+Further functionalities are provided by ```setup.py```. These can be used clicking on ```Run with Parameters``` and adding the following parameters in ```Script Parameters``` :
 
-- ```setup.py d``` : Deletes images from project root directory.                                 
-- ```setup.py d s``` : Deletes images from ```/Processed_spline/*```.                            
-- ```setup.py d n``` : Deletes images from ```/Processed_otsu/*```.
+### Delete images
+- ```d``` : Deletes images from project root directory.                                 
+- ```d s``` : Deletes images from ```/Processed_spline/*```.                            
+- ```d n``` : Deletes images from ```/Processed_otsu/*```.
 
 ### Mosaic
 
