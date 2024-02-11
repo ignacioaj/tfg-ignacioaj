@@ -52,8 +52,10 @@ Download ```process.py``` and place it into project root folder.
 5. Extract the downloaded zip and move the folder whose name is runs into Runs folder (from the project root directory). It is highly recommended to rename the experiment runs folder runs to ```Runs xxx```, being ```xxx``` the experiment config code, for example: ```Runs so2``` , ```Runs nc3``` , ```Runs no4``` , ...
 
 ## Ensemble
-
 To evaluate my model on ImageNet, run:
+
+## Additional ```setup.py``` Functionalities
+
 
 ```eval
 python eval.py --model-file mymodel.pth --benchmark imagenet
