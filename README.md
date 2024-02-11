@@ -30,12 +30,12 @@ pip install -r requirements.txt
 - ```Marked.zip```: Image set with anotations (these annotations allowed image labelling)
 - ```Labels.zip```: Label set indicating chromosome location and class.
 
-## Setup work environment
+## Setting up work environment
 Create a folder where the whole project will be hosted. Then, download ```setup.py```, ```Unmarked.zip``` and ```Labels.zip``` and place them in that folder (from now on, project root directory). ```Marked.zip``` is not neccesary for the project, however, it can be also unzipped to have a glance over which of the chromosomes are actually dicentric chromosomes.
 
  Run ```setup.py``` to have all the neccesary folders for the project created.
 
-## Preprocess images
+## Preprocessing images
 Download ```process.py``` and place it into project root folder. 
 1. Run ```process.py``` to have all the images processed using Spline preprocessing. Once done, you can:
    - Click on ```Run with Parameters``` and add ```h``` in ```Script Parameters``` to: get all the histograms (showing spline curve) for the Spline preprocessing.
@@ -47,14 +47,14 @@ Download ```process.py``` and place it into project root folder.
       - ```k s xxx```: to set seed value to your desired number value ```xxx``` (seed that sets image order randomization)
       - ```k d```: to delete all files from ```KFold-Cross Validation/*``` 
 
-## Training and Validation
+## Training and Validating Model
 1. Upload zips located in ```KFold-Cross Validation``` folder to Google Drive (it is recommended to place them in the folder ```/Colab Notebooks```). Remember the location you place them for next steps.
 2. Download ```train.ipynb``` and open it in Google Colab.
 3. Follow the instructions of the .ipynb and run cells one by one. Note that training process takes too much time (around 20 minutes each), that's why iterating all executions was avoided.
 4. Upload generated ```runs``` folder to GDrive (following the instructions in the .ipynb) and download it from there.
 5. Extract the downloaded zip and move the folder whose name is runs into Runs folder (from the project root directory). It is highly recommended to rename the experiment runs folder ```runs``` to ```Runs xxx```, being ```xxx``` the experiment config code, for example: ```Runs so2``` , ```Runs nc3``` , ```Runs no4``` , ...
 
-## Ensemble
+## Ensembling
 Download ```ensemble.py``` and place it into project root folder.
 1. Open ```setup.py``` and click on ```Run with Parameters``` and add ```vl``` in ```Script Parameters``` to: merge all validation labels from all splits into a single folder (this is neccesary for the ensemble script to work).
 2. Open and run ```process.py``` to generate the excel files corresponding to both phases (phase 1: detection and phase 2: classification) of the ensemble. Three kind of .xlsx will be generated for every image ```xxx``` in every phase:
