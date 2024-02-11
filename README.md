@@ -88,7 +88,7 @@ A mosaic of images can be generated in order to compare them. Use ```mh``` for h
 ### Paint
 Once ```xxx_bbox.xlsx``` has been generated, an image showing the prediction on detected chromosomes can be generated. Ground truth bounding box will be marked in a thin black rectangle, whereas bounding box predictions for dicentric and non-dicentric will be marked with wider rectangles (red for dicentric, green for non-dicentric). It should be noted that detection false positives are NOT shown. 
 
-```p xxx yyy ccc``` where ```xxx``` stands for the name of the image to be edited (excluiding '.jpg'), ```yyy``` is the desired experiment to be studied and ```ccc``` the specific chromosome to be marked (optional, if this last parameter is not included, all chromosomes will be marked). 
+Use ```p xxx yyy ccc``` , where ```xxx``` stands for the name of the image to be edited (excluiding '.jpg'), ```yyy``` is the desired experiment to be studied and ```ccc``` the specific chromosome to be marked (optional, if this last parameter is not included, all chromosomes will be marked).  Generated mosaics will be saved in ```Ensemble/create``` folder of project root directory.
 
 Example: ```p 2Gy-023 nc4 5``` to paint prediction for chromosome of index 5 of image 2Gy-023.jpg (otsu close 4x4 preprocessing).
 
