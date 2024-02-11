@@ -20,14 +20,13 @@ In this work, a detailed study will be carried out in which a convolutional neur
 - ```requirements.txt```: .txt file that contains all project module dependencies to be installed.
 
 ## Installing requirements
-Download ```requirements.txt``` and place it in the folder where the project will be hosted. Then, open the ```cmd``` and reach that folder by using the ```cd``` command.
-Once the folder has been reached, install the requirements by typing:
+Download ```requirements.txt``` and place it in the folder where the project will be hosted (from now on, project root directory). Then, open the ```cmd``` and reach that folder by using the ```cd``` command. Once the folder has been reached, install the requirements by typing:
 ```setup
 pip install -r requirements.txt
 ```
 
 ## Setting up work environment
-Create a folder where the whole project will be hosted. Then, download ```setup.py```, ```Unmarked.zip``` and ```Labels.zip``` and place them in that folder (from now on, project root directory). ```Marked.zip``` is not neccesary for the project, however, it can be also unzipped to have a glance over which of the chromosomes are actually dicentric chromosomes.
+Download ```setup.py```, ```Unmarked.zip``` and ```Labels.zip``` and place them in the project root directory. ```Marked.zip``` is not neccesary for the project, however, it can be also unzipped to have a glance over which of the chromosomes are actually dicentric chromosomes.
 
  Run ```setup.py``` to have all the neccesary folders for the project created.
 
