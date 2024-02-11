@@ -30,9 +30,9 @@ pip install -r requirements.txt
 - ```Labels.zip```: Label set indicating chromosome location and class.
 
 ## Setup work environment
-Create a folder where the whole project will be hosted. Then, download ```setup.py``` and place it in that folder (from now on, project root directory).
-Run ```setup.py``` to have all the neccesary folders for the project created.
-Then, unzip ```Unmarked.zip``` and ```Labels.zip``` into the project root directory. ```Marked.zip``` is not neccesary for the project, however, it can be also unzipped to have a glance over which of the chromosomes are actually dicentric chromosomes.
+Create a folder where the whole project will be hosted. Then, download ```setup.py```, ```Unmarked.zip``` and ```Labels.zip``` and place them in that folder (from now on, project root directory). ```Marked.zip``` is not neccesary for the project, however, it can be also unzipped to have a glance over which of the chromosomes are actually dicentric chromosomes.
+
+ Run ```setup.py``` to have all the neccesary folders for the project created.
 
 ## Preprocess images
 Download ```process.py``` and place it into project root folder. 
