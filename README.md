@@ -53,7 +53,7 @@ Download ```process.py``` and place it into project root folder.
 2. Download ```train.ipynb``` and open it in Google Colab.
 3. Follow the instructions in the .ipynb and run cells one by one. Note that training process takes too much time (around 20 minutes each), that's why iterating all executions was avoided.
 4. Upload generated ```runs``` folder to GDrive (following the instructions in the .ipynb) and download it from there.
-5. Extract the downloaded zip and move the folder whose name is ```detect``` into Runs folder (from the project root directory). It is highly recommended to rename the experiment runs folder ```detect``` to ```Runs xxx```, being ```xxx``` the experiment config code, for example: ```Runs so2``` , ```Runs nc3``` , ```Runs no4``` , ...
+5. Extract the downloaded zip and move the folder whose name is ```detect``` into ```Runs``` folder (in the project root directory). It is highly recommended to rename the experiment runs folder ```detect``` to ```Runs xxx```, being ```xxx``` the experiment config code, for example: ```Runs so2``` , ```Runs nc3``` , ```Runs no4``` , ...
 
 ## Ensembling
 Download ```ensemble.py``` and place it into project root folder.
