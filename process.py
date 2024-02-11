@@ -125,7 +125,7 @@ def plot_hist():
 # Gets raw images from /Unmarked folder and processes them into BW, then      #
 # binary, then morphological transform and saves the results                  #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-def process_images():
+def process_images(config):
     kernels = {
         "K2": np.ones((2, 2), np.uint8),
         "K3": np.ones((3, 3), np.uint8),
@@ -177,7 +177,7 @@ def process_images():
                     else:
                         op = 'O'
 
-                    if 's' in sys.argv:
+                    if config == 's':
                         ad_txt = additions[f'A{ad}']
                         if ad_txt == 0:
                             ad_txt = '00'
@@ -190,11 +190,11 @@ def process_images():
 # Moves images from global folder into Processed folder. It also classifies   #
 # them into different categories according to previous transformations        #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-def images_to_processed():
+def images_to_processed(config):
     dst_path = rf"{cd}\Processed_spline"
     additions = True
     file_list = os.listdir(cd)
-    if 'n' in sys.argv:
+    if config == 'n':
         dst_path = rf"{cd}\Processed_otsu"
     img_list = []
 
@@ -204,7 +204,7 @@ def images_to_processed():
             img_list.append(file_list[idx])
 
     # Locate every image
-    if 's' in sys.argv:
+    if config == 's':
         ind1 = -10  # Refers to morphological filter (O/C)
         ind2 = -9   # Refers to kernel size (2/3/4/5)
         ind3 = -7   # Refers to image addition (00,10,20,30)
@@ -218,10 +218,10 @@ def images_to_processed():
 
         # Opened images transfer according to img category
         if img[ind1] == 'O':
-            for i in range(2, 6):
+            for i in range(2, 6):          #   For every filter size (2...5)
                 if img[ind2] == str(i):
-                    if 's' in sys.argv:
-                        for j in range(4):
+                    if config == 's':
+                        for j in range(4):  # For every addition (0...3)
                             if img[ind3] == str(j):
                                 new_path = dst_path + rf"\Open {i}\Addition {j}0"
                                 if not os.path.isdir(new_path):
@@ -235,17 +235,11 @@ def images_to_processed():
                         if not os.path.isfile(new_path + rf"\{img_list[idx]}"):
                             shutil.move(img, new_path)
 
-
-
-
-
-
-
         # Closed images transfer according to img category
         elif img[ind1] == 'C':
             for i in range(2, 6):
                 if img[ind2] == str(i):
-                    if 's' in sys.argv:
+                    if config == 's':
                         for j in range(4):
                             if img[ind3] == str(j):
                                 new_path = dst_path + rf"\Close {i}\Addition {j}0"
@@ -265,9 +259,9 @@ def images_to_processed():
 # Moves images from global folder into Histogram folder. It also classifies   #
 # them into different categories according to previous transformations        #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-def images_to_hist():
+def images_to_hist(config):
     dst_path = rf"{cd}\Histograms"
-    if 'wos' in sys.argv:
+    if config == 'wos':
         dst_path += '\wo spline'
     else:
         dst_path += '\w spline'
@@ -305,12 +299,21 @@ def images_to_hist():
 
 # > main.py
 if len(sys.argv) == 1 or 'p' in sys.argv or (len(sys.argv) == 2 and 'n' in sys.argv):
-    process_images()
-    images_to_processed()
+    if 'n' in sys.argv:
+        config = 'n'
+    else:
+        config = 's'
+
+    process_images(config)
+    images_to_processed(config)
 
 # > main.py h
 if 'h' in sys.argv and 'd' not in sys.argv:
     plot_hist()
-    images_to_hist()
+    if 'wos' in sys.argv:
+        config = 'wos'
+    else:
+        config = 'ws'
+    images_to_hist(config)
 
 

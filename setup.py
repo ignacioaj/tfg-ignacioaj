@@ -44,7 +44,7 @@ def create_folders():
 
     for exp in range(len(processed)):
         for a in range(len(additions)):
-            if not os.path.isdir(rf'{spline_dir}\{processed[exp]}'):  # Create \Processed_spline\*
+            if not os.path.isdir(rf'{spline_dir}\{processed[exp]}\{additions[a]}'):  # Create \Processed_spline\*
                 os.makedirs(rf'{spline_dir}\{processed[exp]}\{additions[a]}')
 
     for exp in range(len(processed)):
