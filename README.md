@@ -87,7 +87,7 @@ A mosaic of images can be generated in order to compare them. Use ```mh``` for h
 - Compare other images (thought for creating mosaics out of mosaics): Parameter ```j``` will compose a mosaic from images in ```Mosaics``` folder instead from the experiments. Use ```mh j xxx xxx xxx``` or ```mv j xxx xxx xxx``` (add as many ```xxx``` as desired) where ```xxx```  stands for the name of the image to be edited (excluiding '.jpg'). Example: ```mv j mosaic1 mosaic2```
 
 ### Paint
-Once ```xxx_bbox.xlsx``` has been generated, an image showing the prediction on detected chromosomes can be generated. Ground truth bounding box will be marked in a thin black rectangle, whereas bounding box predictions for dicentric and non-dicentric will be marked with wider rectangles (red for dicentric, green for non-dicentric). It should be noted that detection false positives are NOT shown. 
+Once ```xxx_bbox.xlsx``` has been generated, an image showing the prediction on detected chromosomes can be created. Ground truth bounding box will be marked in a thin black rectangle, whereas bounding box predictions for dicentric and non-dicentric will be marked with wider rectangles (red for dicentric, green for non-dicentric). It should be noted that detection false positives are NOT shown. 
 
 Use ```p xxx yyy ccc``` , where ```xxx``` stands for the name of the image to be edited (excluiding '.jpg'), ```yyy``` is the desired experiment to be studied and ```ccc``` the specific chromosome to be marked (optional, if this last parameter is not included, all chromosomes will be marked).  Generated images will be saved in ```Ensemble/create``` folder of project root directory.
 
