@@ -35,10 +35,9 @@ Create a folder where the whole project will be hosted. Then, download ```setup.
 
 ## Preprocessing images
 Download ```process.py``` and place it into project root folder. 
-1. Run ```process.py``` to have all the images processed using Spline preprocessing. Once done, you can:
+1. Run ```process.py``` to have all the images processed. Once done, you can:
    - Click on ```Run with Parameters``` and add ```h``` in ```Script Parameters``` to: get all the histograms (showing spline curve) for the Spline preprocessing.
-   - Click on ```Run with Parameters``` and add ```h wos``` in ```Script Parameters``` to: get all the histograms (without showing spline curve) for the Spline preprocessing. 
-2. Click on ```Run with Parameters``` and add ```n``` in ```Script Parameters``` to: have all the images processed using Otsu preprocessing.
+   - Click on ```Run with Parameters``` and add ```h wos``` in ```Script Parameters``` to: get all the histograms (without showing spline curve) for the Spline preprocessing.
 3. Open ```setup.py```, click on ```Run with Parameters``` and add ```k``` in ```Script Parameters```to: split dataset into train and validation sets (using 5-Fold Cross Validation technique) for every experiment (from just-created preprocessed images). There are additional parameters that can be set:
 
       - ```k c xxx```: to apply algorithm on single experiment ```xxx``` instead of applying algorithm to all experiments.
@@ -73,6 +72,16 @@ Download ```ensemble.py``` and place it into project root folder.
 - ```setup.py d s``` : Deletes images from ```/Processed_spline/*```.                            
 - ```setup.py d n``` : Deletes images from ```/Processed_otsu/*```.
 
+### Mosaic
+
+### Paint
+Once ```xxx_bbox.xlsx``` has been generated, a image showing the prediction on detected chromosomes can be generated. Ground truth bounding box will be marked in a thin black rectangle, whereas predictions for dicentric and non-dicentric will be marked with wider rectangles (red for dicentric, green for non-dicentric). It should be noted that detection false positives are NOT shown. 
+
+```p xxx yyy ccc``` where xxx stands for the name of the image to be edited, yyy is the desired experiment to be studied and ccc the specific chromosome to be shown (optional, if this last parameter is not included, all chromosomes will be marked). Example: ```p 2Gy-023 nc4 5``` to paint chromosome of index 5 for image 2Gy-023.jpg after a otsu close 4x4 preprocessing.
+        > 📋 Let xxx be a 3 character config code, where first character stands for thresholding technique (s for spline, n for otsu),
+        > second character stands for morph filter (o for open c for close) and third character stands for filter size (2 for 2x2, 3 for 3x3, 4 for 4x4 and 5 for 5x5).
+        > 
+        > Example: so2 stands for spline open 2x2.
 
 
 
