@@ -84,7 +84,7 @@ Further functionalities are provided by ```setup.py```. These can be used by cli
 ### Paint
 Once ```xxx_bbox.xlsx``` has been generated, an image showing the prediction on detected chromosomes can be generated. Ground truth bounding box will be marked in a thin black rectangle, whereas bounding box predictions for dicentric and non-dicentric will be marked with wider rectangles (red for dicentric, green for non-dicentric). It should be noted that detection false positives are NOT shown. 
 
-```p xxx yyy ccc``` where xxx stands for the name of the image to be edited, yyy is the desired experiment to be studied and ccc the specific chromosome to be marked (optional, if this last parameter is not included, all chromosomes will be marked). Example: ```p 2Gy-023 nc4 5``` to paint prediction for chromosome of index 5 of image 2Gy-023.jpg (otsu close 4x4 preprocessing).
+```p xxx yyy ccc``` where ```xxx``` stands for the name of the image to be edited, ```yyy``` is the desired experiment to be studied and ```ccc``` the specific chromosome to be marked (optional, if this last parameter is not included, all chromosomes will be marked). Example: ```p 2Gy-023 nc4 5``` to paint prediction for chromosome of index 5 of image 2Gy-023.jpg (otsu close 4x4 preprocessing).
 
 > 📋 Let yyy be a 3 character config code, where first character stands for thresholding technique (s for spline, n for otsu),
 > second character stands for morph filter (o for open c for close) and third character stands for filter size (2 for 2x2, 3 for 3x3, 4 for 4x4 and 5 for 5x5).
