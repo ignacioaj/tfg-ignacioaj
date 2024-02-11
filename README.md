@@ -8,14 +8,6 @@ In this work, a detailed study will be carried out in which a convolutional neur
 ## Scope
 This project represents the bachelor thesis work to complete my Degree in Biomedical Engineering at Univerisity of Málaga.
 
-## Requirements
-
-To install requirements:
-
-```setup
-pip install -r requirements.txt
-```
-
 ## Project files
 
 - ```setup.py```: Script for project setup and project secondary functionalities.
@@ -25,6 +17,14 @@ pip install -r requirements.txt
 - ```Unmarked.zip```: Image set courtesy of the center REAC/TS of Institute ORISE from Tennessee, U.S.
 - ```Marked.zip```: Image set with anotations (these annotations allowed image labelling)
 - ```Labels.zip```: Label set indicating chromosome location and class.
+- ```requirements.txt```: .txt file that contains all project module dependencies to be installed.
+
+## Installing requirements
+Open the ```cmd``` and reach the folder where the project will be hosted (use ```cd``` command).
+Once the folder has been reached, install the requirements by typing:
+```setup
+pip install -r requirements.txt
+```
 
 ## Setting up work environment
 Create a folder where the whole project will be hosted. Then, download ```setup.py```, ```Unmarked.zip``` and ```Labels.zip``` and place them in that folder (from now on, project root directory). ```Marked.zip``` is not neccesary for the project, however, it can be also unzipped to have a glance over which of the chromosomes are actually dicentric chromosomes.
