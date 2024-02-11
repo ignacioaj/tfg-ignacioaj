@@ -6,7 +6,7 @@ Dichentric chromosome counting is a technique widely used in biological dosimetr
 In this work, a detailed study will be carried out in which a convolutional neural network will be trained from a set of images on which different preprocessing techniques will be applied. The predictions produced by the model for each of the experiments will be analysed in order to determine which preprocessing technique provides the best predictions.
 
 ## Scope
-This project represents the bachelor thesis work to complete my Degree in Biomedical Engineering at Univeristy of Málaga.
+This project represents the bachelor thesis work to complete my Degree in Biomedical Engineering at Univerisity of Málaga.
 
 ## Requirements
 
