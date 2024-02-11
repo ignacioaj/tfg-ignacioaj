@@ -62,9 +62,9 @@ Download ```ensemble.py``` and place it into project root folder.
 
 ## Additional ```setup.py``` Functionalities
 
-- ```setup.py d```    => Deletes images from project root directory.                                 
-- ```setup.py d s```  => Deletes images from ```/Processed_spline/*```.                            
-- ```setup.py d n```  => Deletes images from ```/Processed_otsu/*```.
+- ```setup.py d``` : Deletes images from project root directory.                                 
+- ```setup.py d s``` : Deletes images from ```/Processed_spline/*```.                            
+- ```setup.py d n``` : Deletes images from ```/Processed_otsu/*```.
 
 
 
