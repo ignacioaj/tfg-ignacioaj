@@ -297,23 +297,26 @@ def images_to_hist(config):
 #                                                                                   #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-# > main.py
-if len(sys.argv) == 1 or 'p' in sys.argv or (len(sys.argv) == 2 and 'n' in sys.argv):
-    if 'n' in sys.argv:
-        config = 'n'
-    else:
-        config = 's'
-
-    process_images(config)
-    images_to_processed(config)
-
 # > main.py h
-if 'h' in sys.argv and 'd' not in sys.argv:
+if 'h' in sys.argv:
     plot_hist()
     if 'wos' in sys.argv:
         config = 'wos'
     else:
         config = 'ws'
     images_to_hist(config)
+elif len(sys.argv)==1:
+    process_images('s')
+    images_to_processed('s')
+    process_images('n')
+    images_to_processed('n')
+else:
+    if 'n' in sys.argv:
+        config='n'
+    elif 's' in sys.argv:
+        config='s'
+
+    process_images(config)
+    images_to_processed(config)
 
 

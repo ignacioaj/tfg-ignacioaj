@@ -195,8 +195,10 @@ def kfolding(ksplit, seed, config):
         shutil.move(rf"{cd}\data.yaml", fold_dir)
 
     # Create zip (and delete folder)
-    #TODO
-
+    with zipfile.ZipFile(f"{config}.zip", "w") as zip_file:
+        zip_file.write(f"{config}.zip")
+    shutil.rmtree(rf'{kfold_dir}/KFold-Cross Validation')
+    shutil.move(rf'{cd}/{config}.zip',rf'{kfold_dir}')
     print(f'KFolded from {config_dir}')
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -675,29 +677,26 @@ else:
             kfolds_delete()
 
         else:
-            if 'c' in sys.argv:  # Set config
-                ind = sys.argv.index('c') + 1
-                config = sys.argv[ind]
-            else:
-                config = ''  # Default config
 
             if 's' in sys.argv:  # Set seed
                 ind = sys.argv.index('s') + 1
-                seed = sys.argv[ind]
+                seed = float(sys.argv[ind])
             else:
                 seed = round(np.log(2) * 100)  # Default seed
 
             if 'f' in sys.argv:  # Set k-splits
                 ind = sys.argv.index('k') + 1
-                splits = sys.argv[ind]
+                splits = int(sys.argv[ind])
             else:
                 splits = 5  # Default k-splits
 
-            if config == '*':
+            if 'c' in sys.argv:  # Set config
+                ind = sys.argv.index('c') + 1
+                config = sys.argv[ind]
+                kfolding(splits, seed, config)
+            else:
                 for i in range(len(configs)):
                     kfolding(splits, seed, configs[i])
-            else:
-                kfolding(splits, seed, config)
 
     # > setup.py vl
     if 'vl' in sys.argv:
