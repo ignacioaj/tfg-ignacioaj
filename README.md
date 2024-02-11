@@ -2,13 +2,13 @@
 
 # Dicentric Chromosome Detection
 
-## Scope
-This project represents the bachelor thesis work to complete my Degree in Biomedical Engineering at Univeristy of Málaga.
-
 ## Context
 Dichentric chromosome counting is a technique widely used in biological dosimetry to quantify the genetic damage caused by exposure to radioactivity. Traditionally, this task has been performed manually by health professionals. However, the current interest is focused on achieving the automation of this process through Artificial Intelligence tools to achieve a reduction in time and an improvement in the quality of the results. This project aims to contribute to the state of the art of this study which, to date, there is still little research.
 
 In this work, a detailed study will be carried out in which a convolutional neural network will be trained from a set of images on which different preprocessing techniques will be applied. The predictions produced by the model for each of the experiments will be analysed in order to determine which preprocessing technique provides the best predictions.
+
+## Scope
+This project represents the bachelor thesis work to complete my Degree in Biomedical Engineering at Univeristy of Málaga.
 
 ## Requirements
 
