@@ -79,7 +79,7 @@ Once ```xxx_bbox.xlsx``` has been generated, an image showing the prediction on 
 
 ```p xxx yyy ccc``` where xxx stands for the name of the image to be edited, yyy is the desired experiment to be studied and ccc the specific chromosome to be marked (optional, if this last parameter is not included, all chromosomes will be marked). Example: ```p 2Gy-023 nc4 5``` to paint prediction for chromosome of index 5 of image 2Gy-023.jpg (otsu close 4x4 preprocessing).
 
-> 📋 Let xxx be a 3 character config code, where first character stands for thresholding technique (s for spline, n for otsu),
+> 📋 Let yyy be a 3 character config code, where first character stands for thresholding technique (s for spline, n for otsu),
 > second character stands for morph filter (o for open c for close) and third character stands for filter size (2 for 2x2, 3 for 3x3, 4 for 4x4 and 5 for 5x5).
 >
 > Example: so2 stands for spline open 2x2.
