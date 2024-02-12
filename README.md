@@ -20,13 +20,13 @@ In this work, a detailed study will be carried out in which a convolutional neur
 - ```requirements.txt```: .txt file that contains all project module dependencies to be installed.
 
 ## Installing requirements
-Download ```requirements.txt``` and place it in the folder where the project will be hosted (from now on, project root directory). Then, open the ```cmd``` and reach that folder by using the ```cd``` command. Once the folder has been reached, install the requirements by typing:
+Download ```requirements.txt``` and place it in the folder where the project will be hosted (from now on, project root folder). Then, open the ```cmd``` and reach that folder by using the ```cd``` command. Once the folder has been reached, install the requirements by typing:
 ```setup
 pip install -r requirements.txt
 ```
 
 ## Setting up work environment
-Download ```setup.py```, ```Unmarked.zip``` and ```Labels.zip``` and place them in the project root directory. ```Marked.zip``` is not neccesary for the project, however, it can be also unzipped to have a glance over which of the chromosomes are actually dicentric chromosomes.
+Download ```setup.py```, ```Unmarked.zip``` and ```Labels.zip``` and place them in the project root folder. ```Marked.zip``` is not neccesary for the project, however, it can be also unzipped to have a glance over which of the chromosomes are actually dicentric chromosomes.
 
  Run ```setup.py``` to have all the neccesary folders for the project created.
 
@@ -47,14 +47,14 @@ Download ```process.py``` and place it into project root folder.
       - ```k s xxx```: to set seed value to your desired number value ```xxx``` (seed that sets image order randomization)
       - ```k d```: to delete all files from ```KFold-Cross Validation/*```
         
-A ready-to-train zip per experiment will be generated in ```KFold-Cross Validation``` folder (in project root directory). 
+A ready-to-train zip per experiment will be generated in ```KFold-Cross Validation``` folder (in project root folder). 
 
 ## Training and Validating Model
 1. Upload zips located in ```KFold-Cross Validation``` folder to Google Drive (it is recommended to place them in the folder ```/Colab Notebooks```). Remember the location you place them for next steps.
 2. Download ```train.ipynb``` and open it in Google Colab.
 3. Follow the instructions in the .ipynb and sequentially run cells one by one. Note that training process takes too much time (around 20 minutes each), that's why iterating all executions was avoided.
 4. Upload generated ```runs``` folder to GDrive (following the instructions in the .ipynb) and download it from there.
-5. Extract the downloaded zip and move the folder whose name is ```detect``` into ```Runs``` folder (in the project root directory). It is highly recommended to rename the experiment runs folder ```detect``` to ```Runs xxx```, being ```xxx``` the experiment config code, for example: ```Runs so2``` , ```Runs nc3``` , ```Runs no4``` , ...
+5. Extract the downloaded zip and move the folder whose name is ```detect``` into ```Runs``` folder (in the project root folder). It is highly recommended to rename the experiment runs folder ```detect``` to ```Runs xxx```, being ```xxx``` the experiment config code, for example: ```Runs so2``` , ```Runs nc3``` , ```Runs no4``` , ...
 
 ## Ensembling
 Download ```ensemble.py``` and place it into project root folder.
@@ -69,12 +69,12 @@ Download ```ensemble.py``` and place it into project root folder.
 Further functionalities are provided by ```setup.py```. These can be used by clicking on ```Run with Parameters``` and adding the following parameters in ```Script Parameters``` :
 
 ### Delete images
-- ```d``` : to delete images from project root directory.                                 
+- ```d``` : to delete images from project root folder.                                 
 - ```d s``` : to delete images from ```/Processed_spline/*```.                            
 - ```d n``` : to delete images from ```/Processed_otsu/*```.
 
 ### Mosaic
-A mosaic of images can be generated in order to compare them. Use ```mh``` for horizontal mosaics (images height must be the same) and ```mv``` for vertical mosaics (images width must be the same). Generated mosaics will be saved in ```Mosaic``` folder of project root directory. 
+A mosaic of images can be generated in order to compare them. Use ```mh``` for horizontal mosaics (images height must be the same) and ```mv``` for vertical mosaics (images width must be the same). Generated mosaics will be saved in ```Mosaic``` folder of project root folder. 
 
 - Compare different experiments for a single image: Use ```mh xxx yyy yyy yyy``` or ```mv xxx yyy yyy yyy``` (add as many ```yyy``` as desired), where ```xxx``` stands for the name of the image to be edited (excluiding '.jpg') and ```yyy``` are all the desired experiments to be studied. Additionally, you can use parameters ```u``` to add untreated image and ```b``` to add black image.
 
@@ -89,7 +89,7 @@ A mosaic of images can be generated in order to compare them. Use ```mh``` for h
 ### Paint
 Once ```xxx_bbox.xlsx``` has been generated, an image showing the prediction on detected chromosomes can be created. Ground truth bounding box will be marked in a thin black rectangle, whereas bounding box predictions for dicentric and non-dicentric will be marked with wider rectangles (red for dicentric, green for non-dicentric). It should be noted that detection false positives are NOT shown. 
 
-Use ```p xxx yyy ccc``` , where ```xxx``` stands for the name of the image to be edited (excluiding '.jpg'), ```yyy``` is the desired experiment to be studied and ```ccc``` the specific chromosome to be marked (optional, if this last parameter is not included, all chromosomes will be marked).  Generated images will be saved in ```Ensemble/create``` folder of project root directory.
+Use ```p xxx yyy ccc``` , where ```xxx``` stands for the name of the image to be edited (excluiding '.jpg'), ```yyy``` is the desired experiment to be studied and ```ccc``` the specific chromosome to be marked (optional, if this last parameter is not included, all chromosomes will be marked).  Generated images will be saved in ```Ensemble/create``` folder of project root folder.
 
 Example: ```p 2Gy-023 nc4 5``` to paint prediction for chromosome of index 5 of image 2Gy-023.jpg (otsu close 4x4 preprocessing).
 
