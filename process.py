@@ -29,28 +29,28 @@ dir_path = rf"{cd}\Unmarked"
 def get_peak(input_img):
     img_his = cv2.calcHist(input_img, [0], None, [256], [0, 256])
 
-    y_his = img_his[:, 0]
-    x_his = np.transpose(np.linspace(0, 255, 256))
+    x_his = np.transpose(np.linspace(0, 255, 256))  # Intensity values
+    y_his = img_his[:, 0]                                           # Number of pixel with intensity x
 
     spl = interpolate.splrep(x_his, y_his, k=3, s=1000)
 
-    n_samples = 256 * 20
-    x_spl = np.linspace(0, 255, n_samples)
-    y_spl = interpolate.splev(x_spl, spl).tolist()
+    n_samples = 256 * 20                                            # Resampling (get more x values for spline plotting)
+    x_spl = np.linspace(0, 255, n_samples)               # Resampling x
+    y_spl = interpolate.splev(x_spl, spl).tolist()                  # Resampling y
 
-    x_peaks = []
-    x_floors = []
+    x_peaks = []    # This array will store x indexes where max peaks in the spline curve are reached
+    x_floors = []   # This array will store x indexes where floors after peaks in the spline curve are reached
 
-    y_peaks = []
+    y_peaks = []    # This array will store x indexes where max peaks in the spline curve are reached
 
-    d = n_samples * 30 / 256  # Rule of 3: if n_samples == 256 then d_samples == 30
-    ind_peaks = signal.find_peaks(y_spl, height=5., distance=d)[0]  # indexes where peaks can be found
+    d = n_samples * 30 / 256  # Rule of 3: if n_samples == 256 then d_samples == 30. d=30u intensity to consider another peak
+    ind_peaks = signal.find_peaks(y_spl, height=5., distance=d)[0]  # x indexes where peaks can be found
     for i in range(len(ind_peaks)):
-        ind = ind_peaks[i]  # index where i_th peak can be found
-        y_peaks.append(y_spl[ind])  # Peaks on spline curve
+        ind = ind_peaks[i]          # index where i_th peak can be found
+        y_peaks.append(y_spl[ind])  # Add peak on spline curve into y_spl
         x_peaks.append(x_spl[ind])
 
-        isfloor = ind
+        isfloor = ind  # x index where i_th floor can be found
 
         while y_spl[isfloor] > 0:  # is floor (end of the mountain whose peak is y_spl[ind])
             isfloor += 1
@@ -126,32 +126,28 @@ def plot_hist():
 # binary, then morphological transform and saves the results                  #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 def process_images(config):
-    kernels = {
-        "K2": np.ones((2, 2), np.uint8),
-        "K3": np.ones((3, 3), np.uint8),
-        "K4": np.ones((4, 4), np.uint8),
-        "K5": np.ones((5, 5), np.uint8)
+    kernels = {                                   # Kernel size
+        "K2": np.ones((2, 2), np.uint8),    # 2x2
+        "K3": np.ones((3, 3), np.uint8),    # 3x3
+        "K4": np.ones((4, 4), np.uint8),    # 4x4
+        "K5": np.ones((5, 5), np.uint8)     # 5x5
     }
 
-    k10 = np.ones((5, 5), np.uint8)
-
-    morphs = {
-        "M0": cv2.MORPH_CLOSE,
-        "M1": cv2.MORPH_OPEN
+    morphs = {                                    # Kernel morphological filter
+        "M0": cv2.MORPH_CLOSE,                    # Close
+        "M1": cv2.MORPH_OPEN                      # Open
     }
 
-    additions = {
-        "A0": 00,
-        "A1": 10,
-        "A2": 20,
-        "A3": 30
+    additions = {                                 # Additions
+        "A0": 00,                                 # + 0
+        "A1": 10,                                 # + 10
+        "A2": 20,                                 # + 20
+        "A3": 30                                  # + 30
     }
-
-    # focus_kernel = np.matrix([[0, -1, 0], [-1, 5, -1], [0, -1, 0]])
 
     list_img = os.listdir(dir_path)
 
-    for idx in range(len(list_img)):
+    for idx in range(len(list_img)):                  # For every image
         img_dir = dir_path + rf"\{list_img[idx]}"
         save_name = list_img[idx].split('.')[0]
 
@@ -164,11 +160,11 @@ def process_images(config):
         # Image to Binary
         thd = get_peak(img_bw)[0]  # Gets highest black peak
 
-        for ad in range(len(additions)):
+        for ad in range(len(additions)): # For every addition
 
             _, img_bin = cv2.threshold(img_bw, thd + additions[f'A{ad}'], 255, cv2.THRESH_BINARY)
-            for m in range(len(morphs)):
-                for k in range(len(kernels)):
+            for m in range(len(morphs)):         # For every morph filter
+                for k in range(len(kernels)):    # For every filter size
 
                     img_p = cv2.morphologyEx(img_bin, morphs[f'M{m}'], kernels[f'K{k + 2}'])
 

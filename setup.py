@@ -48,16 +48,16 @@ def create_folders():
                 os.makedirs(rf'{spline_dir}\{processed[exp]}\{additions[a]}')
 
     for exp in range(len(processed)):
-        if not os.path.isdir(rf'{otsu_dir}\{processed[exp]}'):  # Create \Processed_otsu\*
+        if not os.path.isdir(rf'{otsu_dir}\{processed[exp]}'):            # Create \Processed_otsu\*
             os.makedirs(rf'{otsu_dir}\{processed[exp]}')
 
-    with zipfile.ZipFile(rf"{cd}/Labels.zip", "r") as zip:
+    with zipfile.ZipFile(rf"{cd}/Labels.zip", "r") as zip:      # Unzip Labels.zip
         zip.extractall()
 
-    with zipfile.ZipFile(rf"{cd}/Unmarked.zip", "r") as zip:
+    with zipfile.ZipFile(rf"{cd}/Unmarked.zip", "r") as zip:    # Unzip Unmarked.zip
         zip.extractall()
 
-    if os.path.isfile(rf"{cd}/Marked.zip"):
+    if os.path.isfile(rf"{cd}/Marked.zip"):                               # Unzip Marked.zip
         with zipfile.ZipFile(rf"{cd}/Marked.zip", "r") as zip:
             zip.extractall()
 
@@ -683,7 +683,7 @@ def paint_bb(image_name,exp,chro_sel):
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 # > setup.py
-if len(sys.argv)==1:
+if len(sys.argv) == 1:
     create_folders()
 else:
     # > setup.py k
