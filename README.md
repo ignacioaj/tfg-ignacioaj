@@ -4,9 +4,9 @@
 This project represents the bachelor thesis work to complete the Degree in Biomedical Engineering at Univerisity of Málaga.
 
 ## Context
-Dichentric chromosome counting is a technique widely used in biological dosimetry to quantify the genetic damage caused by exposure to radioactivity. Traditionally, this task has been performed manually by health professionals. However, the current interest is focused on achieving the automation of this process through Artificial Intelligence tools to achieve a reduction in time and an improvement in the quality of the results. This project aims to contribute to the state of the art of this study which, to date, there is still little research.
+Dicentric chromosome counting is a technique widely used in biological dosimetry to quantify the genetic damage caused by radiation exposure and to estimate the dose the subject has received. Currently, the technique is performed manually. However, interest has recently focused on automating this process using Artificial Intelligence tools to reduce analysis time and improve the quality of the results. This project aims to contribute to the state of the art of this task for which, to date, there is still little research.
 
-In this work, a detailed study will be carried out in which a convolutional neural network will be trained from a set of images on which different preprocessing techniques will be applied. The predictions produced by the model for each of the experiments will be analysed in order to determine which preprocessing technique provides the best predictions.
+In this work, a convolutional neural network has been trained from a set of images (labelled by hand) on which different preprocessing techniques were applied. This model has been trained for each of the experiments, which represents a detailed study of the problem that had never been carried out before.
 
 ## Project files
 
