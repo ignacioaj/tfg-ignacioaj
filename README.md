@@ -75,6 +75,7 @@ Further functionalities are provided by ```setup.py```. These can be used by cli
 - ```d``` : to delete images from project root folder.                                 
 - ```d s``` : to delete images from ```/Processed_spline/*```.                            
 - ```d n``` : to delete images from ```/Processed_otsu/*```.
+- ```d h``` : to delete images from ```/Histograms/*```.
 
 ### Mosaic
 A mosaic of images can be generated in order to compare them. Use ```mh``` for horizontal mosaics (images height must be the same) and ```mv``` for vertical mosaics (images width must be the same). Generated mosaics will be saved in ```Mosaic``` folder of project root folder. 
@@ -103,5 +104,7 @@ Example: ```p 2Gy-023 nc4 5``` to paint prediction for chromosome of index 5 of 
 >
 > Example: so2 stands for spline open 2x2.
 
+### Chromosome Cut
+Use script parameter ```c``` to crop every single chromosome from all unmarked images and get a copy of them stored into ```/Chromosomes```. A .txt file per chromosome stating its class will be also generated. This functionality is thought for further work.
 
 
