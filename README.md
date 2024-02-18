@@ -105,6 +105,6 @@ Example: ```p 2Gy-023 nc4 5``` to paint prediction for chromosome of index 5 of 
 > Example: so2 stands for spline open 2x2.
 
 ### Chromosome Cut
-Use script parameter ```c``` to crop every single chromosome from all unmarked images and get a copy of them stored into ```/Chromosomes```. A .txt file per chromosome stating its class will be also generated. This functionality is thought for further work.
+Use script parameter ```c``` to crop every single chromosome from all unmarked images and get a copy of them stored into ```/Chromosomes```. A .txt file per chromosome stating its class will be also generated. This functionality is thought for further work, however, it can be used to get useful information about chromosome ratios (which is printed in console logs).
 
 
