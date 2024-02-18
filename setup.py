@@ -648,6 +648,7 @@ def paint_bb(image_name,exp,chro_sel):
 # > setup.py d s  => Deletes images from /Processed_spline/*                            #
 # > setup.py d n  => Deletes images from /Processed_otsu/*                              #
 # > setup.py c d  => Deletes images and label.txt from Chromosomes directory            #
+# > setup.py d h  => Deletes images from folder 'Histograms'
 #                                                                                       #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Mosaic                                                                                #
@@ -683,6 +684,11 @@ def paint_bb(image_name,exp,chro_sel):
 #     * a for addition 10, aa for addition 20, aaa for addition 30                      #
 # [4] Index of the desired chromosome whose bbox is to be plotted, if any               #
 #     Not including any (or adding '*' instead of index) will plot all bounding boxes   #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# Chromosome Cut                                                                        #
+# > setup.py c     => Crops every single chromosome from all unmarked images and        #
+#                     stores them into /Chromosomes. Generates a .txt per chromosome    #
+#                     stating their class and prints chromosome ratios in console log   #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 # > setup.py
