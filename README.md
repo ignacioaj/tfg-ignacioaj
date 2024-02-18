@@ -1,5 +1,7 @@
 # Dicentric Chromosome Detection
 
+> ⚠ Disclaimer: Due to the confidentiality of the image set, not all 50 images are shared in this repository. However, 5 of them have been shared to enable code testing.
+
 ## Scope
 This project represents the bachelor thesis work to complete the Degree in Biomedical Engineering at Univerisity of Málaga.
 
