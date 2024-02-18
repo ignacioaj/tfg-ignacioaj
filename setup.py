@@ -29,7 +29,7 @@ kfold_dir = rf"{cd}\KFold-Cross Validation"
 configs = ['no2', 'no3', 'no4', 'no5', 'nc2', 'nc3', 'nc4', 'nc5',
            'so2', 'so3', 'so4', 'so5', 'sc2', 'sc3', 'sc4', 'sc5',
            'so2a', 'so3a', 'so4a', 'so5a', 'sc2a', 'sc3a', 'sc4a', 'sc5a',
-           'so2aa', 'so3aa', 'so4aa', 'so5aa', 'sc2aa', 'sc3aa', 'sc4aa', 'sc5aa'
+           'so2aa', 'so3aa', 'so4aa', 'so5aa', 'sc2aa', 'sc3aa', 'sc4aa', 'sc5aa',
            'so2aaa', 'so3aaa', 'so4aaa', 'so5aaa', 'sc2aaa', 'sc3aaa', 'sc4aaa', 'sc5aaa']
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
