@@ -41,7 +41,8 @@ Download ```process.py``` and place it into project root folder.
 
       - ```k c xxx```: to apply algorithm on one single experiment ```xxx``` instead of applying algorithm to all experiments.
         > 📋 Let xxx be a 3 character config code, where first character stands for thresholding technique (s for spline, n for otsu),
-        > second character stands for morph filter (o for open c for close) and third character stands for filter size (2 for 2x2, 3 for 3x3, 4 for 4x4 and 5 for 5x5).
+        > second character stands for morph filter (o for open c for close) and third character stands for filter size (2 for 2x2, 3 for 3x3, 4 for 4x4 and 5 for 5x5). 
+        > In spline configs there's an optional additional fourth character that stands for additions (a for addition 10, aa for addition 20 and aaa for addition 30).
         > 
         > Example: so2 stands for spline open 2x2.
 
@@ -83,6 +84,7 @@ A mosaic of images can be generated in order to compare them. Use ```mh``` for h
   Examples: ```mh u 2Gy-004 so2 so3 so4 so5``` , ```mh b 2Gy-004 sc2 sc3 sc4 sc5```
   > 📋 Let yyy be a 3 character config code, where first character stands for thresholding technique (s for spline, n for otsu),
   > second character stands for morph filter (o for open c for close) and third character stands for filter size (2 for 2x2, 3 for 3x3, 4 for 4x4 and 5 for 5x5).
+  > In spline configs there's an optional additional fourth character that stands for additions (a for addition 10, aa for addition 20 and aaa for addition 30).
   >
   > Example: so2 stands for spline open 2x2.
 
@@ -97,6 +99,7 @@ Example: ```p 2Gy-023 nc4 5``` to paint prediction for chromosome of index 5 of 
 
 > 📋 Let yyy be a 3 character config code, where first character stands for thresholding technique (s for spline, n for otsu),
 > second character stands for morph filter (o for open c for close) and third character stands for filter size (2 for 2x2, 3 for 3x3, 4 for 4x4 and 5 for 5x5).
+> In spline configs there's an optional additional fourth character that stands for additions (a for addition 10, aa for addition 20 and aaa for addition 30).
 >
 > Example: so2 stands for spline open 2x2.
 
